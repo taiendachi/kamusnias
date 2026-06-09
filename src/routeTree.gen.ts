@@ -9,38 +9,129 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TentangRouteImport } from './routes/tentang'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as CariRouteImport } from './routes/cari'
+import { Route as BudayaRouteImport } from './routes/budaya'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KataSlugRouteImport } from './routes/kata.$slug'
 
+const TentangRoute = TentangRouteImport.update({
+  id: '/tentang',
+  path: '/tentang',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CariRoute = CariRouteImport.update({
+  id: '/cari',
+  path: '/cari',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BudayaRoute = BudayaRouteImport.update({
+  id: '/budaya',
+  path: '/budaya',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KataSlugRoute = KataSlugRouteImport.update({
+  id: '/kata/$slug',
+  path: '/kata/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/budaya': typeof BudayaRoute
+  '/cari': typeof CariRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tentang': typeof TentangRoute
+  '/kata/$slug': typeof KataSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/budaya': typeof BudayaRoute
+  '/cari': typeof CariRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tentang': typeof TentangRoute
+  '/kata/$slug': typeof KataSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/budaya': typeof BudayaRoute
+  '/cari': typeof CariRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tentang': typeof TentangRoute
+  '/kata/$slug': typeof KataSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/budaya'
+    | '/cari'
+    | '/sitemap.xml'
+    | '/tentang'
+    | '/kata/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/budaya' | '/cari' | '/sitemap.xml' | '/tentang' | '/kata/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/budaya'
+    | '/cari'
+    | '/sitemap.xml'
+    | '/tentang'
+    | '/kata/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BudayaRoute: typeof BudayaRoute
+  CariRoute: typeof CariRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TentangRoute: typeof TentangRoute
+  KataSlugRoute: typeof KataSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tentang': {
+      id: '/tentang'
+      path: '/tentang'
+      fullPath: '/tentang'
+      preLoaderRoute: typeof TentangRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cari': {
+      id: '/cari'
+      path: '/cari'
+      fullPath: '/cari'
+      preLoaderRoute: typeof CariRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/budaya': {
+      id: '/budaya'
+      path: '/budaya'
+      fullPath: '/budaya'
+      preLoaderRoute: typeof BudayaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +139,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kata/$slug': {
+      id: '/kata/$slug'
+      path: '/kata/$slug'
+      fullPath: '/kata/$slug'
+      preLoaderRoute: typeof KataSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BudayaRoute: BudayaRoute,
+  CariRoute: CariRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TentangRoute: TentangRoute,
+  KataSlugRoute: KataSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
