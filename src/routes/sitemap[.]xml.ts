@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { fetchDictionary } from "@/lib/dictionary";
+import { BLOG_POSTS } from "@/lib/blog";
 
 // TODO: replace with your project URL once a project name or custom domain is set.
 const BASE_URL = "";
@@ -11,27 +12,38 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const staticEntries = [
           { path: "/", priority: "1.0", changefreq: "daily" },
-          { path: "/budaya", priority: "0.7", changefreq: "monthly" },
+          { path: "/kamus", priority: "0.9", changefreq: "weekly" },
+          { path: "/blog", priority: "0.8", changefreq: "weekly" },
           { path: "/tentang", priority: "0.5", changefreq: "yearly" },
+          { path: "/kontak", priority: "0.4", changefreq: "yearly" },
+          { path: "/saran", priority: "0.5", changefreq: "yearly" },
+          { path: "/support", priority: "0.4", changefreq: "yearly" },
         ];
 
-        let wordEntries: { path: string; priority: string; changefreq: string }[] = [];
+        const blogEntries = BLOG_POSTS.map((p) => ({
+          path: `/blog/${p.slug}`,
+          priority: "0.7",
+          changefreq: "monthly",
+          lastmod: p.date,
+        }));
+
+        let wordEntries: { path: string; priority: string; changefreq: string; lastmod?: string }[] = [];
         try {
           const entries = await fetchDictionary();
           wordEntries = entries.map((e) => ({
             path: `/kata/${e.slug}`,
-            priority: "0.8",
+            priority: "0.6",
             changefreq: "monthly",
           }));
         } catch {
-          // sheet unreachable at build time — sitemap still ships with static routes
+          // sheet unreachable at build time — sitemap still ships
         }
 
-        const all = [...staticEntries, ...wordEntries];
+        const all = [...staticEntries, ...blogEntries, ...wordEntries];
         const urls = all
           .map(
             (e) =>
-              `  <url>\n    <loc>${BASE_URL}${e.path}</loc>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`,
+              `  <url>\n    <loc>${BASE_URL}${e.path}</loc>\n${e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>\n` : ""}    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`,
           )
           .join("\n");
         const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;

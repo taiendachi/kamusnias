@@ -1,55 +1,118 @@
 import { Link } from "@tanstack/react-router";
-import { Moon, Sun, Languages, BookOpen } from "lucide-react";
+import { Moon, Sun, Languages, Menu, X } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { SITE } from "@/lib/site-config";
 import { useI18n, toggleTheme } from "@/lib/i18n";
 import { SearchBox } from "./SearchBox";
 import { StickyMobileAd } from "./AdSlot";
+import { LOGO_URL } from "@/assets/logo";
+
+const NAV = [
+  { to: "/", label: "Beranda" },
+  { to: "/kamus", label: "Kamus Nias" },
+  { to: "/blog", label: "Blog" },
+  { to: "/tentang", label: "Tentang" },
+  { to: "/kontak", label: "Kontak" },
+] as const;
 
 export function Header() {
-  const { lang, setLang, t } = useI18n();
+  const { lang, setLang } = useI18n();
   const [isDark, setIsDark] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-        <Link to="/" className="flex shrink-0 items-center gap-2">
-          <div className="grid h-9 w-9 place-items-center rounded-xl gradient-ocean text-primary-foreground shadow-sm">
-            <BookOpen className="h-5 w-5" />
-          </div>
-          <div className="leading-tight">
-            <div className="font-serif text-base font-bold">{SITE.name}</div>
-            <div className="hidden text-[10px] uppercase tracking-wider text-muted-foreground sm:block">
-              Bahasa · Budaya · Nias
-            </div>
-          </div>
+    <header className="sticky top-0 z-30 border-b border-border bg-background/90 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-2.5">
+        <Link to="/" className="flex shrink-0 items-center gap-2" aria-label={SITE.longName}>
+          <img
+            src={LOGO_URL}
+            alt={`${SITE.longName} — Li Ono Niha`}
+            width={160}
+            height={48}
+            className="h-9 w-auto md:h-11"
+            loading="eager"
+            decoding="async"
+          />
+          <span className="sr-only">{SITE.longName}</span>
         </Link>
         <div className="hidden flex-1 md:block">
           <SearchBox />
         </div>
-        <nav className="ml-auto hidden items-center gap-1 text-sm font-medium md:flex">
-          <Link to="/budaya" className="rounded-md px-3 py-1.5 hover:bg-muted">{t.culture}</Link>
-          <Link to="/tentang" className="rounded-md px-3 py-1.5 hover:bg-muted">{t.about}</Link>
+        <nav className="ml-auto hidden items-center gap-0.5 text-sm font-medium lg:flex">
+          {NAV.map((n) => (
+            <Link
+              key={n.to}
+              to={n.to}
+              className="rounded-md px-3 py-1.5 hover:bg-muted"
+              activeProps={{ className: "rounded-md px-3 py-1.5 bg-primary/10 text-primary" }}
+              activeOptions={{ exact: n.to === "/" }}
+            >
+              {n.label}
+            </Link>
+          ))}
+          <Link
+            to="/support"
+            className="ml-1 rounded-md bg-gold px-3 py-1.5 text-gold-foreground hover:opacity-90"
+          >
+            ❤ Dukung
+          </Link>
         </nav>
         <button
           onClick={() => setLang(lang === "id" ? "ni" : "id")}
-          aria-label={t.toggleLang}
-          className="flex items-center gap-1 rounded-md border border-border px-2 py-1.5 text-xs font-semibold hover:bg-muted"
+          aria-label="Ganti bahasa antarmuka"
+          className="hidden items-center gap-1 rounded-md border border-border px-2 py-1.5 text-xs font-semibold hover:bg-muted md:inline-flex"
         >
           <Languages className="h-3.5 w-3.5" />
           {lang.toUpperCase()}
         </button>
         <button
           onClick={() => { toggleTheme(); setIsDark((d) => !d); }}
-          aria-label={t.toggleTheme}
+          aria-label="Mode tampilan"
           className="rounded-md border border-border p-1.5 hover:bg-muted"
         >
           {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+        </button>
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-label="Buka menu"
+          aria-expanded={open}
+          className="rounded-md border border-border p-1.5 hover:bg-muted lg:hidden"
+        >
+          {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
         </button>
       </div>
       <div className="border-t border-border px-4 py-2 md:hidden">
         <SearchBox />
       </div>
+      {open && (
+        <nav className="border-t border-border bg-background px-4 py-2 lg:hidden">
+          <ul className="flex flex-col text-sm font-medium">
+            {NAV.map((n) => (
+              <li key={n.to}>
+                <Link
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-md px-3 py-2 hover:bg-muted"
+                  activeProps={{ className: "block rounded-md px-3 py-2 bg-primary/10 text-primary" }}
+                  activeOptions={{ exact: n.to === "/" }}
+                >
+                  {n.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link to="/saran" onClick={() => setOpen(false)} className="block rounded-md px-3 py-2 hover:bg-muted">
+                Form Saran
+              </Link>
+            </li>
+            <li>
+              <Link to="/support" onClick={() => setOpen(false)} className="block rounded-md px-3 py-2 text-gold-foreground hover:bg-muted">
+                ❤ Dukung Kami
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }
@@ -57,29 +120,36 @@ export function Header() {
 export function Footer() {
   return (
     <footer className="mt-16 border-t border-border bg-muted/40">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-3">
-        <div>
-          <div className="font-serif text-lg font-bold">{SITE.longName}</div>
-          <p className="mt-2 text-sm text-muted-foreground">{SITE.description}</p>
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-4">
+        <div className="md:col-span-2">
+          <img src={LOGO_URL} alt={SITE.longName} className="h-10 w-auto" loading="lazy" />
+          <p className="mt-3 max-w-md text-sm text-muted-foreground">{SITE.description}</p>
         </div>
         <div>
           <div className="text-sm font-semibold">Navigasi</div>
           <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
-            <li><Link to="/" className="hover:text-foreground">Beranda</Link></li>
-            <li><Link to="/budaya" className="hover:text-foreground">Budaya Nias</Link></li>
-            <li><Link to="/tentang" className="hover:text-foreground">Tentang</Link></li>
+            {NAV.map((n) => (
+              <li key={n.to}>
+                <Link to={n.to} className="hover:text-foreground">{n.label}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div>
-          <div className="text-sm font-semibold">Tentang Bahasa Nias</div>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Bahasa Nias (Li Niha) dituturkan oleh masyarakat Pulau Nias di lepas pantai
-            barat Sumatera. Termasuk rumpun Austronesia.
-          </p>
+          <div className="text-sm font-semibold">Kontribusi</div>
+          <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+            <li><Link to="/saran" className="hover:text-foreground">Form Saran Kata</Link></li>
+            <li><Link to="/support" className="hover:text-foreground">Dukung Kami</Link></li>
+            <li>
+              <a href={`mailto:${SITE.contactEmail}`} className="hover:text-foreground">
+                {SITE.contactEmail}
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
       <div className="border-t border-border px-4 py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {SITE.name}. Ya'ahowu!
+        © {new Date().getFullYear()} {SITE.longName}. Ya'ahowu!
       </div>
     </footer>
   );

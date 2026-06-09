@@ -6,9 +6,10 @@ import { AdSlot } from "@/components/AdSlot";
 import { fetchDictionary } from "@/lib/dictionary";
 import { SITE } from "@/lib/site-config";
 import { useI18n } from "@/lib/i18n";
-import { BookMarked, Globe2, Sparkles } from "lucide-react";
+import { BLOG_POSTS } from "@/lib/blog";
+import { Sparkles, CalendarDays, ArrowRight } from "lucide-react";
 
-const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWYZ".split("");
+const ALPHABET = "ABCDEFGHIJKLMNOPRSTUWYZ".split("");
 
 const homeJsonLd = {
   "@context": "https://schema.org",
@@ -17,40 +18,16 @@ const homeJsonLd = {
   description: SITE.description,
   inLanguage: "id",
   isPartOf: { "@type": "WebSite", name: SITE.longName, url: "/" },
-  speakable: {
-    "@type": "SpeakableSpecification",
-    cssSelector: ["h1", ".hero-sub"],
-  },
+  speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".hero-sub"] },
 };
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
-    {
-      "@type": "Question",
-      name: "Apa itu Kamus Bahasa Nias?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Kamus Bahasa Nias adalah kamus online yang menerjemahkan kata Bahasa Indonesia ke Bahasa Nias (Li Niha) dan sebaliknya, lengkap dengan jenis kata dan konteks budaya.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Apakah Kamus Bahasa Nias gratis?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ya, Kamus Nias dapat diakses sepenuhnya gratis melalui browser apa pun, di desktop maupun ponsel.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Apa nama Bahasa Nias dalam bahasa aslinya?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Bahasa Nias disebut Li Niha oleh penutur aslinya dan termasuk rumpun bahasa Austronesia.",
-      },
-    },
+    { "@type": "Question", name: "Apa itu Kamus Nias - Li Niha?", acceptedAnswer: { "@type": "Answer", text: "Kamus Nias - Li Niha adalah kamus online yang menerjemahkan kata Bahasa Indonesia ke Bahasa Nias (Li Niha) dan sebaliknya, lengkap dengan jenis kata dan konteks budaya." } },
+    { "@type": "Question", name: "Apakah Kamus Nias gratis?", acceptedAnswer: { "@type": "Answer", text: "Ya, Kamus Nias dapat diakses sepenuhnya gratis melalui browser apa pun." } },
+    { "@type": "Question", name: "Apa nama Bahasa Nias dalam bahasa aslinya?", acceptedAnswer: { "@type": "Answer", text: "Bahasa Nias disebut Li Niha oleh penutur aslinya dan termasuk rumpun bahasa Austronesia." } },
   ],
 };
 
@@ -59,7 +36,7 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: `${SITE.longName} — ${SITE.tagline}` },
       { name: "description", content: SITE.description },
-      { name: "keywords", content: "kamus nias, kamus bahasa nias, li niha, bahasa daerah nias, terjemahan nias indonesia, budaya nias" },
+      { name: "keywords", content: "kamus nias, kamus bahasa nias, li niha, li ono niha, bahasa daerah nias, terjemahan nias indonesia" },
       { property: "og:title", content: `${SITE.longName} — ${SITE.tagline}` },
       { property: "og:description", content: SITE.description },
       { property: "og:url", content: "/" },
@@ -111,8 +88,13 @@ function HomePage() {
       </div>
 
       <section className="mx-auto max-w-6xl px-4 py-8">
-        <h2 className="font-serif text-2xl font-bold">{t.pickLetter}</h2>
-        <div className="mt-4 grid grid-cols-6 gap-2 sm:grid-cols-9 md:grid-cols-13">
+        <div className="flex items-end justify-between gap-3">
+          <h2 className="font-serif text-2xl font-bold">{t.pickLetter}</h2>
+          <Link to="/kamus" className="text-sm font-medium text-primary hover:underline">
+            Lihat semua kamus →
+          </Link>
+        </div>
+        <div className="mt-4 grid grid-cols-6 gap-2 sm:grid-cols-9 md:grid-cols-12">
           {ALPHABET.map((letter) => (
             <Link
               key={letter}
@@ -126,39 +108,35 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-4 px-4 py-8 md:grid-cols-3">
-        <FeatureCard
-          icon={<BookMarked className="h-5 w-5" />}
-          title="Kosakata Lengkap"
-          desc="Ribuan kata Indonesia ↔ Nias dengan jenis kata dan konteks."
-        />
-        <FeatureCard
-          icon={<Globe2 className="h-5 w-5" />}
-          title="Dwi-bahasa UI"
-          desc="Tampilan bisa dialihkan ke Li Niha untuk pelestarian bahasa."
-        />
-        <FeatureCard
-          icon={<Sparkles className="h-5 w-5" />}
-          title="Cepat & SEO-friendly"
-          desc="Setiap kata memiliki halaman tersendiri yang siap diindeks."
-        />
-      </section>
-
       <section className="mx-auto max-w-6xl px-4 py-8">
-        <h2 className="font-serif text-2xl font-bold">Kata Pilihan</h2>
-        <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {entries.slice(0, 12).map((e) => (
+        <div className="flex items-end justify-between gap-3">
+          <div>
+            <h2 className="font-serif text-2xl font-bold">Artikel Terbaru</h2>
+            <p className="text-sm text-muted-foreground">Wawasan seputar Bahasa & Budaya Nias.</p>
+          </div>
+          <Link to="/blog" className="text-sm font-medium text-primary hover:underline">
+            Semua artikel →
+          </Link>
+        </div>
+        <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {BLOG_POSTS.slice(0, 6).map((p) => (
             <Link
-              key={e.id}
-              to="/kata/$slug"
-              params={{ slug: e.slug }}
-              className="group flex items-center justify-between gap-3 rounded-xl border border-border bg-card p-4 transition hover:border-primary hover:shadow"
+              key={p.slug}
+              to="/blog/$slug"
+              params={{ slug: p.slug }}
+              className="group flex flex-col rounded-xl border border-border bg-card p-5 transition hover:border-primary hover:shadow"
             >
-              <div>
-                <div className="font-semibold">{e.indo}</div>
-                {e.jenis && <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{e.jenis}</div>}
+              <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-muted-foreground">
+                <CalendarDays className="h-3 w-3" />
+                {new Date(p.date).toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" })}
               </div>
-              <div className="font-serif italic text-ocean group-hover:text-primary">{e.nias}</div>
+              <h3 className="mt-2 font-serif text-lg font-bold leading-snug group-hover:text-primary">
+                {p.title}
+              </h3>
+              <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{p.description}</p>
+              <span className="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                Baca selengkapnya <ArrowRight className="h-3.5 w-3.5" />
+              </span>
             </Link>
           ))}
         </div>
@@ -180,15 +158,5 @@ function HomePage() {
         </dl>
       </section>
     </Layout>
-  );
-}
-
-function FeatureCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
-  return (
-    <div className="rounded-xl border border-border bg-card p-5">
-      <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary/10 text-primary">{icon}</div>
-      <div className="mt-3 font-serif text-lg font-bold">{title}</div>
-      <p className="mt-1 text-sm text-muted-foreground">{desc}</p>
-    </div>
   );
 }
