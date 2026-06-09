@@ -81,7 +81,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     try { localStorage.setItem("kn:lang", l); } catch {}
     if (typeof document !== "undefined") document.documentElement.lang = l === "ni" ? "nia" : "id";
   };
-  return <I18nCtx.Provider value={{ lang, setLang, t: STRINGS[lang] }}>{children}</I18nCtx.Provider>;
+  return <I18nCtx.Provider value={{ lang, setLang, t: STRINGS[lang] as Strings }}>{children}</I18nCtx.Provider>;
 }
 
 export const useI18n = () => {
