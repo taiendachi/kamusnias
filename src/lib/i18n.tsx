@@ -65,7 +65,8 @@ const STRINGS = {
   },
 } as const;
 
-type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: (typeof STRINGS)["id"] };
+type Strings = (typeof STRINGS)["id"];
+type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: Strings };
 
 const I18nCtx = createContext<Ctx | null>(null);
 
