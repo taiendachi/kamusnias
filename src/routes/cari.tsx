@@ -11,20 +11,17 @@ const searchSchema = z.object({ q: z.string().optional().default("") });
 
 export const Route = createFileRoute("/cari")({
   validateSearch: searchSchema,
-  head: ({ search }) => {
-    const q = (search as { q?: string }).q ?? "";
-    const title = q ? `Hasil pencarian "${q}" — ${SITE.name}` : `Pencarian — ${SITE.name}`;
-    const desc = q
-      ? `Hasil pencarian kata "${q}" di ${SITE.longName}.`
-      : "Cari kosakata Bahasa Nias dan Indonesia.";
+  head: () => {
+    const title = `Pencarian — ${SITE.name}`;
+    const desc = "Cari kosakata Bahasa Nias dan Indonesia di Kamus Nias.";
     return {
       meta: [
         { title },
         { name: "description", content: desc },
-        { name: "robots", content: q ? "noindex, follow" : "index, follow" },
+        { name: "robots", content: "noindex, follow" },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
-        { property: "og:url", content: q ? `/cari?q=${encodeURIComponent(q)}` : "/cari" },
+        { property: "og:url", content: "/cari" },
       ],
       links: [{ rel: "canonical", href: "/cari" }],
     };
