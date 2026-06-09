@@ -10,7 +10,8 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const staticEntries = [
+        type Entry = { path: string; priority: string; changefreq: string; lastmod?: string };
+        const staticEntries: Entry[] = [
           { path: "/", priority: "1.0", changefreq: "daily" },
           { path: "/kamus", priority: "0.9", changefreq: "weekly" },
           { path: "/blog", priority: "0.8", changefreq: "weekly" },
@@ -27,7 +28,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           lastmod: p.date,
         }));
 
-        let wordEntries: { path: string; priority: string; changefreq: string; lastmod?: string }[] = [];
+        let wordEntries: Entry[] = [];
         try {
           const entries = await fetchDictionary();
           wordEntries = entries.map((e) => ({

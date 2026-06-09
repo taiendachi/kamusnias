@@ -104,14 +104,14 @@ function BlogPost() {
         <AdSlot type="adsense" slot="inArticle" />
 
         <div className="prose prose-sm mt-6 max-w-none text-foreground/90 md:prose-base">
-          {post.content.split(/\n\n+/).map((para, i) => (
+          {post.content.split(/\n\n+/).map((para: string, i: number) => (
             <p key={i} className="my-4 leading-relaxed">{para}</p>
           ))}
         </div>
 
         {post.tags && post.tags.length > 0 && (
           <div className="mt-8 flex flex-wrap gap-2">
-            {post.tags.map((tg) => (
+            {post.tags.map((tg: string) => (
               <span key={tg} className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">#{tg}</span>
             ))}
           </div>
