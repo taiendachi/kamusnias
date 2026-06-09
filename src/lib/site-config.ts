@@ -1,17 +1,25 @@
 // Site-wide configuration. Edit ad slot IDs and sheet info here.
 
 export const SITE = {
-  name: "Kamus Nias",
-  longName: "Kamus Bahasa Nias Online",
-  tagline: "Kamus Bahasa Nias terlengkap — Indonesia ⇄ Nias",
+  name: "Kamus Nias - Li Niha",
+  longName: "Kamus Nias - Li Niha",
+  tagline: "Kamus Bahasa Nias terlengkap — Indonesia ⇄ Nias (Li Niha)",
   description:
-    "Kamus Bahasa Nias Online terlengkap. Terjemahan Indonesia ke Nias dan Nias ke Indonesia, dilengkapi jenis kata, contoh, serta wawasan budaya Nias.",
+    "Kamus Nias - Li Niha. Kamus Bahasa Nias online terlengkap untuk terjemahan Indonesia ⇄ Nias, dilengkapi jenis kata, contoh, dan artikel seputar Bahasa Nias.",
   locale: "id_ID",
+  contactEmail: "info.kamusnias@gmail.com",
   // Google Sheet (must be published / shareable). Uses gviz CSV endpoint — no API key needed.
   sheetId: "1z-MNQCt0Id7BayxJHJx8N_JQ06JtZvBtGKWLs9tb8-8",
-  sheetName: "", // optional sheet/tab name
+  sheetName: "",
   twitter: "@kamusnias",
   organization: "Kamus Nias",
+  // Dukungan / Support
+  support: {
+    gopay: "0852-1330-719",
+    accountName: "Kamus Nias",
+    // Upload QR (GoPay/DANA) ke src/assets dan ganti path-nya di sini.
+    qrImage: "" as string,
+  },
 } as const;
 
 export const csvUrl = () => {
@@ -33,5 +41,5 @@ export const ADS = {
   },
   mgid: { enabled: false, widgetId: "MGID-WIDGET-ID" },
   asterra: { enabled: false, zoneId: "ASTERRA-ZONE-ID" },
-  banner: { enabled: true }, // direct-sold banner placeholder
+  banner: { enabled: true },
 } as const;

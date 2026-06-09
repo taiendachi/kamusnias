@@ -10,15 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TentangRouteImport } from './routes/tentang'
+import { Route as SupportRouteImport } from './routes/support'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SaranRouteImport } from './routes/saran'
+import { Route as KontakRouteImport } from './routes/kontak'
+import { Route as KamusRouteImport } from './routes/kamus'
 import { Route as CariRouteImport } from './routes/cari'
-import { Route as BudayaRouteImport } from './routes/budaya'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as KataSlugRouteImport } from './routes/kata.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const TentangRoute = TentangRouteImport.update({
   id: '/tentang',
   path: '/tentang',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -26,14 +36,24 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SaranRoute = SaranRouteImport.update({
+  id: '/saran',
+  path: '/saran',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontakRoute = KontakRouteImport.update({
+  id: '/kontak',
+  path: '/kontak',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KamusRoute = KamusRouteImport.update({
+  id: '/kamus',
+  path: '/kamus',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CariRoute = CariRouteImport.update({
   id: '/cari',
   path: '/cari',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BudayaRoute = BudayaRouteImport.update({
-  id: '/budaya',
-  path: '/budaya',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -41,65 +61,116 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KataSlugRoute = KataSlugRouteImport.update({
   id: '/kata/$slug',
   path: '/kata/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/budaya': typeof BudayaRoute
   '/cari': typeof CariRoute
+  '/kamus': typeof KamusRoute
+  '/kontak': typeof KontakRoute
+  '/saran': typeof SaranRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/support': typeof SupportRoute
   '/tentang': typeof TentangRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/kata/$slug': typeof KataSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/budaya': typeof BudayaRoute
   '/cari': typeof CariRoute
+  '/kamus': typeof KamusRoute
+  '/kontak': typeof KontakRoute
+  '/saran': typeof SaranRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/support': typeof SupportRoute
   '/tentang': typeof TentangRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/kata/$slug': typeof KataSlugRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/budaya': typeof BudayaRoute
   '/cari': typeof CariRoute
+  '/kamus': typeof KamusRoute
+  '/kontak': typeof KontakRoute
+  '/saran': typeof SaranRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/support': typeof SupportRoute
   '/tentang': typeof TentangRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/kata/$slug': typeof KataSlugRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/budaya'
     | '/cari'
+    | '/kamus'
+    | '/kontak'
+    | '/saran'
     | '/sitemap.xml'
+    | '/support'
     | '/tentang'
+    | '/blog/$slug'
     | '/kata/$slug'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/budaya' | '/cari' | '/sitemap.xml' | '/tentang' | '/kata/$slug'
+  to:
+    | '/'
+    | '/cari'
+    | '/kamus'
+    | '/kontak'
+    | '/saran'
+    | '/sitemap.xml'
+    | '/support'
+    | '/tentang'
+    | '/blog/$slug'
+    | '/kata/$slug'
+    | '/blog'
   id:
     | '__root__'
     | '/'
-    | '/budaya'
     | '/cari'
+    | '/kamus'
+    | '/kontak'
+    | '/saran'
     | '/sitemap.xml'
+    | '/support'
     | '/tentang'
+    | '/blog/$slug'
     | '/kata/$slug'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BudayaRoute: typeof BudayaRoute
   CariRoute: typeof CariRoute
+  KamusRoute: typeof KamusRoute
+  KontakRoute: typeof KontakRoute
+  SaranRoute: typeof SaranRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SupportRoute: typeof SupportRoute
   TentangRoute: typeof TentangRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   KataSlugRoute: typeof KataSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -111,11 +182,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TentangRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saran': {
+      id: '/saran'
+      path: '/saran'
+      fullPath: '/saran'
+      preLoaderRoute: typeof SaranRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontak': {
+      id: '/kontak'
+      path: '/kontak'
+      fullPath: '/kontak'
+      preLoaderRoute: typeof KontakRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kamus': {
+      id: '/kamus'
+      path: '/kamus'
+      fullPath: '/kamus'
+      preLoaderRoute: typeof KamusRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cari': {
@@ -125,18 +224,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CariRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/budaya': {
-      id: '/budaya'
-      path: '/budaya'
-      fullPath: '/budaya'
-      preLoaderRoute: typeof BudayaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kata/$slug': {
@@ -146,27 +245,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KataSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BudayaRoute: BudayaRoute,
   CariRoute: CariRoute,
+  KamusRoute: KamusRoute,
+  KontakRoute: KontakRoute,
+  SaranRoute: SaranRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SupportRoute: SupportRoute,
   TentangRoute: TentangRoute,
+  BlogSlugRoute: BlogSlugRoute,
   KataSlugRoute: KataSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
