@@ -36,9 +36,6 @@ function KamusPage() {
           <h1 className="font-serif text-3xl font-bold md:text-4xl">Kamus Nias - Li Niha</h1>
           <p className="mt-2 text-muted-foreground">{desc}</p>
           <div className="mx-auto mt-5 max-w-2xl"><SearchBox /></div>
-          <div className="mt-3 text-xs text-muted-foreground">
-            {isLoading ? "Memuat…" : `${entries.length.toLocaleString("id-ID")} kosakata tersedia`}
-          </div>
         </div>
       </section>
 
