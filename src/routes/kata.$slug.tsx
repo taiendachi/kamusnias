@@ -169,7 +169,10 @@ function WordPage() {
             <div className="text-xs font-semibold uppercase tracking-wider text-ocean">
               {t.niasLabel}
             </div>
-            <div className="translation mt-1 font-serif text-3xl italic text-ocean-deep md:text-4xl">
+            <div
+              className="translation mt-1 text-3xl text-ocean-deep md:text-5xl"
+              style={{ fontFamily: "'Arial Black', 'Helvetica Neue', Arial, sans-serif", fontWeight: 900, letterSpacing: "-0.01em" }}
+            >
               {entry.nias}
             </div>
           </div>
@@ -192,7 +195,7 @@ function WordPage() {
           <h2 className="font-serif text-lg font-bold">Penjelasan</h2>
           <p className="mt-2 text-sm leading-relaxed text-foreground/90">
             Kata <strong>{entry.indo}</strong> dalam Bahasa Indonesia diterjemahkan menjadi{" "}
-            <em className="text-ocean">{entry.nias}</em> dalam Bahasa Nias (Li Niha).
+            <strong className="text-ocean-deep">{entry.nias}</strong> dalam Bahasa Nias (Li Niha).
             {entry.jenis && <> Kata ini termasuk dalam kategori <strong>{jenisLabel(entry.jenis)}</strong>.</>}{" "}
             Bahasa Nias dituturkan oleh masyarakat Pulau Nias di Sumatera Utara dan merupakan
             bagian dari rumpun bahasa Austronesia.
@@ -233,7 +236,7 @@ function WordPage() {
                   className="flex items-center justify-between rounded-lg border border-border bg-card p-3 text-sm hover:border-primary"
                 >
                   <span className="font-medium">{r.indo}</span>
-                  <span className="font-serif italic text-ocean">{r.nias}</span>
+                  <span className="text-ocean-deep" style={{ fontFamily: "'Arial Black', Arial, sans-serif", fontWeight: 900 }}>{r.nias}</span>
                 </Link>
               ))}
             </div>

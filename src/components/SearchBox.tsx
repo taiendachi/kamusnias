@@ -65,7 +65,7 @@ export function SearchBox({ autoFocus = false }: { autoFocus?: boolean }) {
       {open && results.length > 0 && (
         <ul
           role="listbox"
-          className="absolute z-30 mt-2 w-full overflow-hidden rounded-xl border border-border bg-popover shadow-lg"
+          className="absolute z-50 mt-2 max-h-[70vh] w-full overflow-auto rounded-xl border border-border bg-popover shadow-xl"
         >
           {results.map((r) => (
             <li key={r.id}>
@@ -75,7 +75,12 @@ export function SearchBox({ autoFocus = false }: { autoFocus?: boolean }) {
                 className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm hover:bg-accent/40"
               >
                 <span className="font-medium">{r.indo}</span>
-                <span className="font-serif italic text-ocean">{r.nias}</span>
+                <span
+                  className="text-ocean-deep"
+                  style={{ fontFamily: "'Arial Black', Arial, sans-serif", fontWeight: 900 }}
+                >
+                  {r.nias}
+                </span>
               </button>
             </li>
           ))}

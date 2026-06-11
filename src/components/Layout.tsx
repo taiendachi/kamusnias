@@ -9,7 +9,6 @@ import { LOGO_URL } from "@/assets/logo";
 
 const NAV = [
   { to: "/", label: "Beranda" },
-  { to: "/kamus", label: "Kamus Nias" },
   { to: "/blog", label: "Blog" },
   { to: "/tentang", label: "Tentang" },
   { to: "/kontak", label: "Kontak" },
@@ -52,9 +51,9 @@ export function Header() {
           ))}
           <Link
             to="/support"
-            className="ml-1 rounded-md bg-gold px-3 py-1.5 text-gold-foreground hover:opacity-90"
+            className="ml-1 inline-flex items-center gap-1 rounded-full bg-[#e11d2a] px-3 py-1.5 font-semibold text-white shadow-sm transition hover:bg-[#c41722] hover:shadow-md animate-wiggle"
           >
-            ❤ Dukung
+            <span className="inline-block animate-heart">❤</span> Dukung
           </Link>
         </nav>
         <button
