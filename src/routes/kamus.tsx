@@ -23,7 +23,7 @@ export const Route = createFileRoute("/kamus")({
 });
 
 function KamusPage() {
-  const { data: entries = [], isLoading } = useQuery({
+  const { data: entries = [] } = useQuery({
     queryKey: ["dictionary"],
     queryFn: fetchDictionary,
     staleTime: 1000 * 60 * 60,
@@ -73,7 +73,7 @@ function KamusPage() {
                 <div className="text-sm font-semibold">{e.indo}</div>
                 {e.jenis && <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{e.jenis}</div>}
               </div>
-              <div className="font-serif text-sm italic text-ocean group-hover:text-primary">{e.nias}</div>
+              <div className="text-sm text-ocean-deep group-hover:text-primary" style={{ fontFamily: "'Arial Black', Arial, sans-serif", fontWeight: 900 }}>{e.nias}</div>
             </Link>
           ))}
         </div>
