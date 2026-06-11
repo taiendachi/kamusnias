@@ -73,7 +73,7 @@ function SearchPage() {
                   <div className="font-semibold">{e.indo}</div>
                   {e.jenis && <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{e.jenis}</div>}
                 </div>
-                <div className="font-serif italic text-ocean">{e.nias}</div>
+                <div className="text-ocean-deep" style={{ fontFamily: "'Arial Black', Arial, sans-serif", fontWeight: 900 }}>{e.nias}</div>
               </Link>
             </li>
           ))}
