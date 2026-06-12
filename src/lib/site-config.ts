@@ -15,9 +15,11 @@ export const SITE = {
   organization: "Kamus Nias",
   // Dukungan / Support
   support: {
-    gopay: "0852-1330-719",
+    number: "085213307191",
+    numberDisplay: "0852-1330-7191",
     accountName: "Kamus Nias",
-    // Upload QR (GoPay/DANA) ke src/assets dan ganti path-nya di sini.
+    // Upload QR QRIS (satu QR untuk GoPay, DANA, OVO, ShopeePay, dll)
+    // ke src/assets lalu set path-nya di sini.
     qrImage: "" as string,
   },
 } as const;

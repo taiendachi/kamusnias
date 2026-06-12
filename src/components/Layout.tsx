@@ -127,11 +127,8 @@ export function Footer() {
         <div>
           <div className="text-sm font-semibold">Navigasi</div>
           <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
-            {NAV.map((n) => (
-              <li key={n.to}>
-                <Link to={n.to} className="hover:text-foreground">{n.label}</Link>
-              </li>
-            ))}
+            <li><Link to="/" className="hover:text-foreground">Beranda</Link></li>
+            <li><Link to="/blog" className="hover:text-foreground">Blog</Link></li>
           </ul>
         </div>
         <div>
@@ -139,6 +136,7 @@ export function Footer() {
           <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
             <li><Link to="/saran" className="hover:text-foreground">Form Saran Kata</Link></li>
             <li><Link to="/support" className="hover:text-foreground">Dukung Kami</Link></li>
+            <li><Link to="/kontak" className="hover:text-foreground">Kontak</Link></li>
             <li>
               <a href={`mailto:${SITE.contactEmail}`} className="hover:text-foreground">
                 {SITE.contactEmail}

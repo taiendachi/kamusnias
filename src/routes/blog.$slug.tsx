@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
+import { BlogContent } from "@/components/BlogContent";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS, getPost } from "@/lib/blog";
 import { CalendarDays, ChevronLeft } from "lucide-react";
@@ -103,11 +104,7 @@ function BlogPost() {
 
         <AdSlot type="adsense" slot="inArticle" />
 
-        <div className="prose prose-sm mt-6 max-w-none text-foreground/90 md:prose-base">
-          {post.content.split(/\n\n+/).map((para: string, i: number) => (
-            <p key={i} className="my-4 leading-relaxed">{para}</p>
-          ))}
-        </div>
+        <BlogContent content={post.content} />
 
         {post.tags && post.tags.length > 0 && (
           <div className="mt-8 flex flex-wrap gap-2">
