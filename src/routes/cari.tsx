@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
 import { z } from "zod";
 import { Layout } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
@@ -39,9 +40,13 @@ function SearchPage() {
   });
 
   const queryStr = q.trim();
-  const results = queryStr.length === 1
-    ? entries.filter((e) => e.indo.toLowerCase().startsWith(queryStr.toLowerCase())).slice(0, 200)
-    : searchEntries(entries, queryStr, 200);
+  const results = useMemo(
+    () =>
+      queryStr.length === 1
+        ? entries.filter((e) => e.indo.toLowerCase().startsWith(queryStr.toLowerCase())).slice(0, 200)
+        : searchEntries(entries, queryStr, 200),
+    [entries, queryStr],
+  );
 
   return (
     <Layout>
