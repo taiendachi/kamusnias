@@ -1,7 +1,7 @@
 {
-  "name": "Kamus Bahasa Nias Online",
+  "name": "Kamus Nias - Li Niha",
   "short_name": "Kamus Nias",
-  "description": "Kamus Bahasa Nias terlengkap — Indonesia ⇄ Nias",
+  "description": "Kamus Bahasa Nias (Li Niha) online — terjemahan Indonesia ⇄ Nias",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
