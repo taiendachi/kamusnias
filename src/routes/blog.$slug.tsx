@@ -2,9 +2,10 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
 import { BlogContent } from "@/components/BlogContent";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS, getPost } from "@/lib/blog";
-import { CalendarDays, ChevronLeft } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -15,6 +16,8 @@ export const Route = createFileRoute("/blog/$slug")({
   head: ({ loaderData, params }) => {
     const post = loaderData?.post;
     if (!post) return { meta: [{ title: "Artikel tidak ditemukan" }] };
+    const url = `${SITE.url}/blog/${params.slug}`;
+    const image = post.cover || SITE.ogImage;
     return {
       meta: [
         { title: `${post.title} — ${SITE.name}` },
@@ -22,14 +25,19 @@ export const Route = createFileRoute("/blog/$slug")({
         { name: "keywords", content: (post.tags ?? []).join(", ") },
         { name: "author", content: post.author ?? SITE.organization },
         { property: "article:published_time", content: post.date },
+        { property: "article:author", content: post.author ?? SITE.organization },
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.description },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: `/blog/${params.slug}` },
+        { property: "og:url", content: url },
+        { property: "og:image", content: image },
+        { property: "og:image:alt", content: post.title },
+        { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: post.title },
         { name: "twitter:description", content: post.description },
+        { name: "twitter:image", content: image },
       ],
-      links: [{ rel: "canonical", href: `/blog/${params.slug}` }],
+      links: [{ rel: "canonical", href: url }],
       scripts: [{
         type: "application/ld+json",
         children: JSON.stringify({
@@ -37,12 +45,17 @@ export const Route = createFileRoute("/blog/$slug")({
           "@type": "BlogPosting",
           headline: post.title,
           description: post.description,
+          image: image,
           datePublished: post.date,
           dateModified: post.date,
           inLanguage: "id",
           author: { "@type": "Organization", name: post.author ?? SITE.organization },
-          publisher: { "@type": "Organization", name: SITE.organization },
-          mainEntityOfPage: { "@type": "WebPage", "@id": `/blog/${params.slug}` },
+          publisher: {
+            "@type": "Organization",
+            name: SITE.organization,
+            logo: { "@type": "ImageObject", url: SITE.ogImage },
+          },
+          mainEntityOfPage: { "@type": "WebPage", "@id": url },
           keywords: (post.tags ?? []).join(", "),
         }),
       }, {
@@ -51,9 +64,9 @@ export const Route = createFileRoute("/blog/$slug")({
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Beranda", item: "/" },
-            { "@type": "ListItem", position: 2, name: "Blog", item: "/blog" },
-            { "@type": "ListItem", position: 3, name: post.title, item: `/blog/${params.slug}` },
+            { "@type": "ListItem", position: 1, name: "Beranda", item: `${SITE.url}/` },
+            { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
+            { "@type": "ListItem", position: 3, name: post.title, item: url },
           ],
         }),
       }],
@@ -85,12 +98,14 @@ function BlogPost() {
   return (
     <Layout>
       <article className="mx-auto max-w-3xl px-4 py-10">
-        <nav className="mb-4 text-sm text-muted-foreground">
-          <Link to="/blog" className="inline-flex items-center gap-1 hover:text-foreground">
-            <ChevronLeft className="h-3 w-3" /> Semua artikel
-          </Link>
-        </nav>
-        <header>
+        <Breadcrumbs
+          items={[
+            { label: "Beranda", to: "/" },
+            { label: "Blog", to: "/blog" },
+            { label: post.title },
+          ]}
+        />
+        <header className="mt-4">
           <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-muted-foreground">
             <CalendarDays className="h-3 w-3" />
             <time dateTime={post.date}>
@@ -100,6 +115,18 @@ function BlogPost() {
           </div>
           <h1 className="mt-2 font-serif text-3xl font-bold leading-tight md:text-4xl">{post.title}</h1>
           <p className="mt-3 text-lg text-muted-foreground">{post.description}</p>
+          {post.cover && (
+            <img
+              src={post.cover}
+              alt={post.title}
+              width={1200}
+              height={630}
+              loading="eager"
+              decoding="async"
+              referrerPolicy="no-referrer"
+              className="mt-5 aspect-[1200/630] w-full rounded-xl border border-border object-cover"
+            />
+          )}
         </header>
 
         <AdSlot type="adsense" slot="inArticle" />
@@ -125,10 +152,22 @@ function BlogPost() {
                   <Link
                     to="/blog/$slug"
                     params={{ slug: p.slug }}
-                    className="block rounded-lg border border-border bg-card p-4 hover:border-primary"
+                    className="group block overflow-hidden rounded-lg border border-border bg-card hover:border-primary"
                   >
-                    <div className="font-semibold">{p.title}</div>
-                    <div className="mt-1 line-clamp-2 text-xs text-muted-foreground">{p.description}</div>
+                    {p.cover && (
+                      <img
+                        src={p.cover}
+                        alt={p.title}
+                        loading="lazy"
+                        decoding="async"
+                        referrerPolicy="no-referrer"
+                        className="aspect-[16/9] w-full object-cover"
+                      />
+                    )}
+                    <div className="p-4">
+                      <div className="font-semibold group-hover:text-primary">{p.title}</div>
+                      <div className="mt-1 line-clamp-2 text-xs text-muted-foreground">{p.description}</div>
+                    </div>
                   </Link>
                 </li>
               ))}
