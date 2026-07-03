@@ -13,9 +13,14 @@ export const Route = createFileRoute("/blog/")({
     meta: [
       { title }, { name: "description", content: desc },
       { property: "og:title", content: title }, { property: "og:description", content: desc },
-      { property: "og:url", content: "/blog" }, { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE.url}/blog` }, { property: "og:type", content: "website" },
+      { property: "og:image", content: SITE.ogImage },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: desc },
+      { name: "twitter:image", content: SITE.ogImage },
     ],
-    links: [{ rel: "canonical", href: "/blog" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/blog` }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify({
@@ -29,8 +34,9 @@ export const Route = createFileRoute("/blog/")({
           headline: p.title,
           description: p.description,
           datePublished: p.date,
+          image: p.cover ?? SITE.ogImage,
           author: { "@type": "Organization", name: p.author ?? SITE.organization },
-          url: `/blog/${p.slug}`,
+          url: `${SITE.url}/blog/${p.slug}`,
         })),
       }),
     }],
