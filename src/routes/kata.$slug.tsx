@@ -2,10 +2,11 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { fetchDictionary, jenisLabel, type Entry } from "@/lib/dictionary";
 import { SITE } from "@/lib/site-config";
 import { useI18n } from "@/lib/i18n";
-import { ArrowLeft, Copy, Share2, Volume2 } from "lucide-react";
+import { Copy, Share2, Volume2 } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/kata/$slug")({
