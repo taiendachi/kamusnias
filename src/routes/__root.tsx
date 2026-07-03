@@ -77,46 +77,69 @@ const orgJsonLd = {
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=5" },
-      { title: `${SITE.longName} — ${SITE.tagline}` },
-      { name: "description", content: SITE.description },
-      { name: "author", content: SITE.organization },
-      { name: "theme-color", content: "#1e6091" },
-      { name: "geo.placename", content: "Nias, Indonesia" },
-      { name: "geo.region", content: "ID-SU" },
-      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
-      { property: "og:site_name", content: SITE.longName },
-      { property: "og:type", content: "website" },
-      { property: "og:locale", content: "id_ID" },
-      { property: "og:locale:alternate", content: "nia_ID" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: SITE.twitter },
-      { property: "og:image", content: SITE.ogImage },
-      { property: "og:image:width", content: "512" },
-      { property: "og:image:height", content: "512" },
-      { property: "og:image:alt", content: SITE.longName },
-      { name: "twitter:image", content: SITE.ogImage },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
-      { rel: "apple-touch-icon", href: "/favicon.png" },
-      { rel: "manifest", href: "/manifest.webmanifest" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "manifest", href: "/manifest.webmanifest" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "preconnect", href: "https://docs.google.com", crossOrigin: "anonymous" },
-      { rel: "dns-prefetch", href: "https://docs.google.com" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" },
-    ],
-    scripts: [
+  head: () => {
+    const v = SITE.verification;
+    const verificationMeta = [
+      v.google && { name: "google-site-verification", content: v.google },
+      v.bing && { name: "msvalidate.01", content: v.bing },
+      v.yandex && { name: "yandex-verification", content: v.yandex },
+      v.pinterest && { name: "p:domain_verify", content: v.pinterest },
+      v.facebook && { name: "facebook-domain-verification", content: v.facebook },
+      v.adsensePublisherId && { name: "google-adsense-account", content: v.adsensePublisherId },
+    ].filter(Boolean) as { name: string; content: string }[];
+
+    const scripts: Array<
+      | { type: string; children: string }
+      | { src: string; async?: boolean; crossOrigin?: string }
+    > = [
       { type: "application/ld+json", children: JSON.stringify(orgJsonLd) },
-    ],
-  }),
+    ];
+    if (v.adsensePublisherId) {
+      scripts.push({
+        src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${v.adsensePublisherId}`,
+        async: true,
+        crossOrigin: "anonymous",
+      });
+    }
+
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=5" },
+        { title: `${SITE.longName} — ${SITE.tagline}` },
+        { name: "description", content: SITE.description },
+        { name: "author", content: SITE.organization },
+        { name: "theme-color", content: "#1e6091" },
+        { name: "geo.placename", content: "Nias, Indonesia" },
+        { name: "geo.region", content: "ID-SU" },
+        { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+        ...verificationMeta,
+        { property: "og:site_name", content: SITE.longName },
+        { property: "og:type", content: "website" },
+        { property: "og:locale", content: "id_ID" },
+        { property: "og:locale:alternate", content: "nia_ID" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: SITE.twitter },
+        { property: "og:image", content: SITE.ogImage },
+        { property: "og:image:width", content: "512" },
+        { property: "og:image:height", content: "512" },
+        { property: "og:image:alt", content: SITE.longName },
+        { name: "twitter:image", content: SITE.ogImage },
+      ],
+      links: [
+        { rel: "stylesheet", href: appCss },
+        { rel: "icon", type: "image/png", href: "/favicon.png" },
+        { rel: "apple-touch-icon", href: "/favicon.png" },
+        { rel: "manifest", href: "/manifest.webmanifest" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        { rel: "preconnect", href: "https://docs.google.com", crossOrigin: "anonymous" },
+        { rel: "dns-prefetch", href: "https://docs.google.com" },
+        { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" },
+      ],
+      scripts,
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
