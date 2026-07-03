@@ -55,6 +55,13 @@ export function Header() {
             <span className="inline-block animate-heart">❤</span> Dukung
           </Link>
         </nav>
+        <Link
+          to="/support"
+          aria-label="Dukung Kami"
+          className="ml-auto inline-flex items-center gap-1 rounded-full bg-[#e11d2a] px-2.5 py-1 text-xs font-semibold text-white shadow-sm hover:bg-[#c41722] animate-wiggle lg:hidden"
+        >
+          <span className="inline-block animate-heart">❤</span> Dukung
+        </Link>
         <button
           onClick={() => setLang(lang === "id" ? "ni" : "id")}
           aria-label="Ganti bahasa antarmuka"
@@ -119,9 +126,9 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-border bg-muted/40">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-4">
-        <div className="md:col-span-2">
+        <div>
           <img src={LOGO_URL} alt={SITE.longName} className="h-10 w-auto" loading="lazy" />
-          <p className="mt-3 max-w-md text-sm text-muted-foreground">{SITE.description}</p>
+          <p className="mt-3 text-sm text-muted-foreground">{SITE.description}</p>
         </div>
         <div>
           <div className="text-sm font-semibold">Navigasi</div>
@@ -129,6 +136,11 @@ export function Footer() {
             <li><Link to="/" className="hover:text-foreground">Beranda</Link></li>
             <li><Link to="/blog" className="hover:text-foreground">Blog</Link></li>
             <li><Link to="/tentang" className="hover:text-foreground">Tentang</Link></li>
+          </ul>
+        </div>
+        <div>
+          <div className="text-sm font-semibold">Halaman</div>
+          <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
             <li><Link to="/page/disclaimer" className="hover:text-foreground">Disclaimer</Link></li>
             <li><Link to="/page/privacy-policy" className="hover:text-foreground">Privacy Policy</Link></li>
             <li><Link to="/page/terms-of-service" className="hover:text-foreground">Terms of Service</Link></li>
@@ -140,11 +152,6 @@ export function Footer() {
             <li><Link to="/saran" className="hover:text-foreground">Form Saran Kata</Link></li>
             <li><Link to="/support" className="hover:text-foreground">Dukung Kami</Link></li>
             <li><Link to="/kontak" className="hover:text-foreground">Kontak</Link></li>
-            <li>
-              <a href={`mailto:${SITE.contactEmail}`} className="hover:text-foreground">
-                {SITE.contactEmail}
-              </a>
-            </li>
           </ul>
         </div>
       </div>
