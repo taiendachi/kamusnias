@@ -128,6 +128,10 @@ export function Footer() {
           <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
             <li><Link to="/" className="hover:text-foreground">Beranda</Link></li>
             <li><Link to="/blog" className="hover:text-foreground">Blog</Link></li>
+            <li><Link to="/tentang" className="hover:text-foreground">Tentang</Link></li>
+            <li><Link to="/page/disclaimer" className="hover:text-foreground">Disclaimer</Link></li>
+            <li><Link to="/page/privacy-policy" className="hover:text-foreground">Privacy Policy</Link></li>
+            <li><Link to="/page/terms-of-service" className="hover:text-foreground">Terms of Service</Link></li>
           </ul>
         </div>
         <div>
