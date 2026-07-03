@@ -79,6 +79,7 @@ Pelestarian Bahasa Nias menjadi penting di era modern karena penggunaannya di ka
       "Langkah praktis memulai belajar kosakata Bahasa Nias: mulai dari sapaan harian, angka, hingga tips menghafal kata dengan cepat.",
     date: "2026-06-05",
     author: "Tim Kamus Nias",
+    cover: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaxR1jXN5R6loBiRr2Mao46qDY6cMnAeAzaWx-UFx4q4DeDU7y0muQgFZLsTY5PVc6q7XTDAhW_NjveD0qhp11nrFyieXBYSURug7oSQiAWYVr2op1bBRsaqHu51dMTr3TLHUT64UJZ4R4flySb2l01AU4Huet9dASICxmTotTcUiEjExjvDzsTzaYfqY/s1563/kamus%20nias.png",
     tags: ["belajar", "pemula", "kosakata"],
     content: `Belajar Bahasa Nias bisa dimulai dari hal paling sederhana — sapaan harian. Kata **"Ya'ahowu"** misalnya, adalah sapaan universal masyarakat Nias yang berarti salam berkah.
 
