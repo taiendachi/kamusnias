@@ -44,6 +44,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Pengantar Bahasa Nias atau Li Niha — sejarah singkat, dialek utara/tengah/selatan, dan ciri khas fonologi yang membuatnya unik di rumpun Austronesia.",
     date: "2026-06-01",
     author: "Tim Kamus Nias",
+    cover: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaxR1jXN5R6loBiRr2Mao46qDY6cMnAeAzaWx-UFx4q4DeDU7y0muQgFZLsTY5PVc6q7XTDAhW_NjveD0qhp11nrFyieXBYSURug7oSQiAWYVr2op1bBRsaqHu51dMTr3TLHUT64UJZ4R4flySb2l01AU4Huet9dASICxmTotTcUiEjExjvDzsTzaYfqY/s1563/kamus%20nias.png",
     tags: ["bahasa", "nias", "li niha"],
     content: `Bahasa Nias atau **Li Niha** adalah bahasa daerah yang dituturkan oleh masyarakat Pulau Nias di lepas pantai barat Sumatera Utara. Bahasa ini termasuk dalam rumpun Austronesia, sub-keluarga Melayu-Polinesia Barat.
 
