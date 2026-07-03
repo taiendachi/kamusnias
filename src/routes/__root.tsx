@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       v.pinterest && { name: "p:domain_verify", content: v.pinterest },
       v.facebook && { name: "facebook-domain-verification", content: v.facebook },
       v.adsensePublisherId && { name: "google-adsense-account", content: v.adsensePublisherId },
-    ].filter(Boolean)) as Array<{ name: string; content: string }>;
+    ].filter(Boolean) as unknown) as Array<{ name: string; content: string }>;
 
     const scripts: Array<Record<string, unknown>> = [
       { type: "application/ld+json", children: JSON.stringify(orgJsonLd) },
