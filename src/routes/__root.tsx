@@ -79,26 +79,23 @@ const orgJsonLd = {
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => {
     const v = SITE.verification;
-    const verificationMeta = [
+    const verificationMeta = ([
       v.google && { name: "google-site-verification", content: v.google },
       v.bing && { name: "msvalidate.01", content: v.bing },
       v.yandex && { name: "yandex-verification", content: v.yandex },
       v.pinterest && { name: "p:domain_verify", content: v.pinterest },
       v.facebook && { name: "facebook-domain-verification", content: v.facebook },
       v.adsensePublisherId && { name: "google-adsense-account", content: v.adsensePublisherId },
-    ].filter(Boolean) as { name: string; content: string }[];
+    ].filter(Boolean)) as Array<{ name: string; content: string }>;
 
-    const scripts: Array<
-      | { type: string; children: string }
-      | { src: string; async?: boolean; crossOrigin?: string }
-    > = [
+    const scripts: Array<Record<string, unknown>> = [
       { type: "application/ld+json", children: JSON.stringify(orgJsonLd) },
     ];
     if (v.adsensePublisherId) {
       scripts.push({
         src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${v.adsensePublisherId}`,
         async: true,
-        crossOrigin: "anonymous",
+        crossOrigin: "anonymous" as const,
       });
     }
 
