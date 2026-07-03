@@ -55,6 +55,13 @@ export function Header() {
             <span className="inline-block animate-heart">❤</span> Dukung
           </Link>
         </nav>
+        <Link
+          to="/support"
+          aria-label="Dukung Kami"
+          className="ml-auto inline-flex items-center gap-1 rounded-full bg-[#e11d2a] px-2.5 py-1 text-xs font-semibold text-white shadow-sm hover:bg-[#c41722] animate-wiggle lg:hidden"
+        >
+          <span className="inline-block animate-heart">❤</span> Dukung
+        </Link>
         <button
           onClick={() => setLang(lang === "id" ? "ni" : "id")}
           aria-label="Ganti bahasa antarmuka"
