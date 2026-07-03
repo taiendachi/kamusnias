@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS } from "@/lib/blog";
 import { CalendarDays, ArrowRight } from "lucide-react";
