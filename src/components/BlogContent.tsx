@@ -67,6 +67,38 @@ interface Heading { level: 2 | 3; text: string; id: string; }
 
 function TOC({ headings }: { headings: Heading[] }) {
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string>(headings[0]?.id ?? "");
+
+  useEffect(() => {
+    if (headings.length < 2 || typeof window === "undefined") return;
+    const nodes = headings
+      .map((h) => document.getElementById(h.id))
+      .filter((n): n is HTMLElement => !!n);
+    if (nodes.length === 0) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActiveId(visible[0].target.id);
+      },
+      { rootMargin: "-96px 0px -70% 0px", threshold: [0, 1] },
+    );
+    nodes.forEach((n) => io.observe(n));
+    return () => io.disconnect();
+  }, [headings]);
+
+  const jump = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    setActiveId(id);
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Update URL hash for shareable deep-link, tanpa memicu scroll ulang
+    if (typeof history !== "undefined") history.replaceState(null, "", `#${id}`);
+  };
+
   if (headings.length < 2) return null;
   return (
     <nav
@@ -88,13 +120,25 @@ function TOC({ headings }: { headings: Heading[] }) {
       </button>
       {open && (
         <ol className="list-decimal space-y-1.5 border-t border-border px-6 py-3 pl-8 text-sm marker:text-primary">
-          {headings.map((h) => (
-            <li key={h.id} className={h.level === 3 ? "ml-4" : ""}>
-              <a href={`#${h.id}`} className="hover:text-primary hover:underline">
-                {h.text}
-              </a>
-            </li>
-          ))}
+          {headings.map((h) => {
+            const isActive = h.id === activeId;
+            return (
+              <li key={h.id} className={h.level === 3 ? "ml-4" : ""}>
+                <a
+                  href={`#${h.id}`}
+                  onClick={(e) => jump(e, h.id)}
+                  aria-current={isActive ? "location" : undefined}
+                  className={`block rounded px-1 py-0.5 transition-colors hover:text-primary hover:underline ${
+                    isActive
+                      ? "bg-primary/10 font-semibold text-primary"
+                      : "text-foreground/80"
+                  }`}
+                >
+                  {h.text}
+                </a>
+              </li>
+            );
+          })}
         </ol>
       )}
     </nav>
