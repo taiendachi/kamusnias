@@ -2,10 +2,11 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Layout } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { fetchDictionary, jenisLabel, type Entry } from "@/lib/dictionary";
 import { SITE } from "@/lib/site-config";
 import { useI18n } from "@/lib/i18n";
-import { ArrowLeft, Copy, Share2, Volume2 } from "lucide-react";
+import { Copy, Share2, Volume2 } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/kata/$slug")({
@@ -30,14 +31,14 @@ export const Route = createFileRoute("/kata/$slug")({
     const jenis = jenisLabel(entry.jenis);
     const title = `${entry.indo} dalam Bahasa Nias = ${entry.nias} — ${SITE.name}`;
     const desc = `Arti "${entry.indo}" dalam Bahasa Nias adalah "${entry.nias}"${jenis ? ` (${jenis})` : ""}. Terjemahan lengkap di ${SITE.longName}.`;
-    const url = `/kata/${params.slug}`;
+    const url = `${SITE.url}/kata/${params.slug}`;
 
     const breadcrumb = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Beranda", item: "/" },
-        { "@type": "ListItem", position: 2, name: "Kamus", item: "/" },
+        { "@type": "ListItem", position: 1, name: "Beranda", item: `${SITE.url}/` },
+        { "@type": "ListItem", position: 2, name: "Kamus", item: `${SITE.url}/kamus` },
         { "@type": "ListItem", position: 3, name: entry.indo, item: url },
       ],
     };
@@ -106,8 +107,12 @@ export const Route = createFileRoute("/kata/$slug")({
         { property: "og:description", content: desc },
         { property: "og:url", content: url },
         { property: "og:type", content: "article" },
+        { property: "og:image", content: SITE.ogImage },
+        { property: "og:image:alt", content: `${entry.indo} = ${entry.nias}` },
+        { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: desc },
+        { name: "twitter:image", content: SITE.ogImage },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -149,11 +154,14 @@ function WordPage() {
   return (
     <Layout>
       <article className="mx-auto max-w-3xl px-4 py-6">
-        <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
-          <Link to="/" className="hover:text-foreground inline-flex items-center gap-1">
-            <ArrowLeft className="h-3 w-3" /> {t.backHome}
-          </Link>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { label: "Beranda", to: "/" },
+            { label: "Kamus", to: "/kamus" },
+            { label: entry.indo },
+          ]}
+        />
+
 
         <header className="mt-4 rounded-2xl border border-border bg-card p-6 shadow-sm">
           <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">

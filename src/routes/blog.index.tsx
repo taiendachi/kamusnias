@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/Layout";
 import { AdSlot } from "@/components/AdSlot";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS } from "@/lib/blog";
 import { CalendarDays, ArrowRight } from "lucide-react";
@@ -13,9 +14,14 @@ export const Route = createFileRoute("/blog/")({
     meta: [
       { title }, { name: "description", content: desc },
       { property: "og:title", content: title }, { property: "og:description", content: desc },
-      { property: "og:url", content: "/blog" }, { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE.url}/blog` }, { property: "og:type", content: "website" },
+      { property: "og:image", content: SITE.ogImage },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: desc },
+      { name: "twitter:image", content: SITE.ogImage },
     ],
-    links: [{ rel: "canonical", href: "/blog" }],
+    links: [{ rel: "canonical", href: `${SITE.url}/blog` }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify({
@@ -29,8 +35,9 @@ export const Route = createFileRoute("/blog/")({
           headline: p.title,
           description: p.description,
           datePublished: p.date,
+          image: p.cover ?? SITE.ogImage,
           author: { "@type": "Organization", name: p.author ?? SITE.organization },
-          url: `/blog/${p.slug}`,
+          url: `${SITE.url}/blog/${p.slug}`,
         })),
       }),
     }],
@@ -43,7 +50,8 @@ function BlogIndex() {
     <Layout>
       <section className="border-b border-border bg-muted/30">
         <div className="mx-auto max-w-4xl px-4 py-10">
-          <h1 className="font-serif text-3xl font-bold md:text-4xl">Blog Kamus Nias</h1>
+          <Breadcrumbs items={[{ label: "Beranda", to: "/" }, { label: "Blog" }]} />
+          <h1 className="mt-3 font-serif text-3xl font-bold md:text-4xl">Blog Kamus Nias</h1>
           <p className="mt-2 text-muted-foreground">{desc}</p>
         </div>
       </section>
@@ -55,17 +63,29 @@ function BlogIndex() {
               <Link
                 to="/blog/$slug"
                 params={{ slug: p.slug }}
-                className="group flex h-full flex-col rounded-xl border border-border bg-card p-5 transition hover:border-primary hover:shadow"
+                className="group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition hover:border-primary hover:shadow"
               >
-                <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-muted-foreground">
-                  <CalendarDays className="h-3 w-3" />
-                  {new Date(p.date).toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" })}
+                {p.cover && (
+                  <img
+                    src={p.cover}
+                    alt={p.title}
+                    loading="lazy"
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                    className="aspect-[16/9] w-full object-cover"
+                  />
+                )}
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-muted-foreground">
+                    <CalendarDays className="h-3 w-3" />
+                    {new Date(p.date).toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" })}
+                  </div>
+                  <h2 className="mt-2 font-serif text-xl font-bold leading-snug group-hover:text-primary">{p.title}</h2>
+                  <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
+                  <span className="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                    Baca selengkapnya <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
                 </div>
-                <h2 className="mt-2 font-serif text-xl font-bold leading-snug group-hover:text-primary">{p.title}</h2>
-                <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
-                <span className="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                  Baca selengkapnya <ArrowRight className="h-3.5 w-3.5" />
-                </span>
               </Link>
             </li>
           ))}
