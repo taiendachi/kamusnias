@@ -154,11 +154,14 @@ function WordPage() {
   return (
     <Layout>
       <article className="mx-auto max-w-3xl px-4 py-6">
-        <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
-          <Link to="/" className="hover:text-foreground inline-flex items-center gap-1">
-            <ArrowLeft className="h-3 w-3" /> {t.backHome}
-          </Link>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { label: "Beranda", to: "/" },
+            { label: "Kamus", to: "/kamus" },
+            { label: entry.indo },
+          ]}
+        />
+
 
         <header className="mt-4 rounded-2xl border border-border bg-card p-6 shadow-sm">
           <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
