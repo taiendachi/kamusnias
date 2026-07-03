@@ -10,7 +10,6 @@ import { LOGO_URL } from "@/assets/logo";
 const NAV = [
   { to: "/", label: "Beranda" },
   { to: "/blog", label: "Blog" },
-  { to: "/tentang", label: "Tentang" },
   { to: "/kontak", label: "Kontak" },
 ] as const;
 
