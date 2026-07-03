@@ -107,8 +107,12 @@ export const Route = createFileRoute("/kata/$slug")({
         { property: "og:description", content: desc },
         { property: "og:url", content: url },
         { property: "og:type", content: "article" },
+        { property: "og:image", content: SITE.ogImage },
+        { property: "og:image:alt", content: `${entry.indo} = ${entry.nias}` },
+        { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: desc },
+        { name: "twitter:image", content: SITE.ogImage },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
