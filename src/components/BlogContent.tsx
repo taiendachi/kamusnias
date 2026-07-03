@@ -263,45 +263,36 @@ export function BlogContent({ content }: { content: string }) {
       const header = splitRow(rows[0]);
       const body = rows.slice(1).filter((r) => !isTableSep(r)).map(splitRow);
       blocks.push(
-        <div key={key++} className="my-5 w-full">
-          {/* Desktop / tablet: tabel penuh, tanpa scroll horizontal */}
-          <table className="hidden w-full table-fixed border-collapse overflow-hidden rounded-lg border border-border text-sm sm:table">
-            <thead>
-              <tr className="bg-muted/70">
-                {header.map((c, j) => (
-                  <th key={j} className="break-words border-b border-border px-3 py-2 text-left font-semibold align-top">
-                    {renderInline(c)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {body.map((row, r) => (
-                <tr key={r} className="even:bg-muted/30">
-                  {row.map((c, j) => (
-                    <td key={j} className="break-words border-b border-border px-3 py-2 align-top last:border-b-0">
-                      {renderInline(c)}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {/* Mobile: kartu bertumpuk agar tidak perlu geser kiri-kanan */}
-          <div className="space-y-3 sm:hidden">
-            {body.map((row, r) => (
-              <div key={r} className="overflow-hidden rounded-lg border border-border bg-card">
-                {row.map((c, j) => (
-                  <div key={j} className="grid grid-cols-[minmax(0,40%)_minmax(0,60%)] gap-2 border-b border-border p-3 last:border-b-0">
-                    <div className="break-words text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                      {renderInline(header[j] ?? "")}
-                    </div>
-                    <div className="break-words text-sm">{renderInline(c)}</div>
+        <div
+          key={key++}
+          role="table"
+          aria-label="Tabel data"
+          className="my-5 w-full space-y-3"
+        >
+          {body.map((row, r) => (
+            <div
+              key={r}
+              role="row"
+              className="overflow-hidden rounded-lg border border-border bg-card shadow-sm"
+            >
+              {row.map((c, j) => (
+                <div
+                  key={j}
+                  className="grid grid-cols-[minmax(0,40%)_minmax(0,60%)] items-start gap-3 border-b border-border p-3 last:border-b-0 sm:grid-cols-[minmax(0,32%)_minmax(0,68%)] sm:gap-4 sm:px-4 sm:py-3"
+                >
+                  <div
+                    role="rowheader"
+                    className="break-words text-[11px] font-semibold uppercase tracking-wide text-muted-foreground sm:text-xs"
+                  >
+                    {renderInline(header[j] ?? "")}
                   </div>
-                ))}
-              </div>
-            ))}
-          </div>
+                  <div role="cell" className="break-words text-sm sm:text-[0.95rem]">
+                    {renderInline(c)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>,
       );
       continue;
