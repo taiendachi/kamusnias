@@ -18,6 +18,7 @@ import { Route as KamusRouteImport } from './routes/kamus'
 import { Route as CariRouteImport } from './routes/cari'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as PagePrivacyPolicyRouteImport } from './routes/page.privacy-policy'
 import { Route as PageDisclaimerRouteImport } from './routes/page.disclaimer'
 import { Route as KataSlugRouteImport } from './routes/kata.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -67,6 +68,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PagePrivacyPolicyRoute = PagePrivacyPolicyRouteImport.update({
+  id: '/page/privacy-policy',
+  path: '/page/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PageDisclaimerRoute = PageDisclaimerRouteImport.update({
   id: '/page/disclaimer',
   path: '/page/disclaimer',
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/kata/$slug': typeof KataSlugRoute
   '/page/disclaimer': typeof PageDisclaimerRoute
+  '/page/privacy-policy': typeof PagePrivacyPolicyRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/blog/$slug': typeof BlogSlugRoute
   '/kata/$slug': typeof KataSlugRoute
   '/page/disclaimer': typeof PageDisclaimerRoute
+  '/page/privacy-policy': typeof PagePrivacyPolicyRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/kata/$slug': typeof KataSlugRoute
   '/page/disclaimer': typeof PageDisclaimerRoute
+  '/page/privacy-policy': typeof PagePrivacyPolicyRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/kata/$slug'
     | '/page/disclaimer'
+    | '/page/privacy-policy'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -154,6 +164,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/kata/$slug'
     | '/page/disclaimer'
+    | '/page/privacy-policy'
     | '/blog'
   id:
     | '__root__'
@@ -168,6 +179,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/kata/$slug'
     | '/page/disclaimer'
+    | '/page/privacy-policy'
     | '/blog/'
   fileRoutesById: FileRoutesById
 }
@@ -183,6 +195,7 @@ export interface RootRouteChildren {
   BlogSlugRoute: typeof BlogSlugRoute
   KataSlugRoute: typeof KataSlugRoute
   PageDisclaimerRoute: typeof PageDisclaimerRoute
+  PagePrivacyPolicyRoute: typeof PagePrivacyPolicyRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
@@ -251,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/page/privacy-policy': {
+      id: '/page/privacy-policy'
+      path: '/page/privacy-policy'
+      fullPath: '/page/privacy-policy'
+      preLoaderRoute: typeof PagePrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/page/disclaimer': {
       id: '/page/disclaimer'
       path: '/page/disclaimer'
@@ -287,6 +307,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogSlugRoute: BlogSlugRoute,
   KataSlugRoute: KataSlugRoute,
   PageDisclaimerRoute: PageDisclaimerRoute,
+  PagePrivacyPolicyRoute: PagePrivacyPolicyRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
