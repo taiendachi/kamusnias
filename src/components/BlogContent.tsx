@@ -1,4 +1,4 @@
-import { Fragment, useMemo, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useMemo, useState, type ReactNode } from "react";
 import { ChevronDown, List } from "lucide-react";
 
 /**
@@ -67,6 +67,38 @@ interface Heading { level: 2 | 3; text: string; id: string; }
 
 function TOC({ headings }: { headings: Heading[] }) {
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string>(headings[0]?.id ?? "");
+
+  useEffect(() => {
+    if (headings.length < 2 || typeof window === "undefined") return;
+    const nodes = headings
+      .map((h) => document.getElementById(h.id))
+      .filter((n): n is HTMLElement => !!n);
+    if (nodes.length === 0) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActiveId(visible[0].target.id);
+      },
+      { rootMargin: "-96px 0px -70% 0px", threshold: [0, 1] },
+    );
+    nodes.forEach((n) => io.observe(n));
+    return () => io.disconnect();
+  }, [headings]);
+
+  const jump = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    setActiveId(id);
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Update URL hash for shareable deep-link, tanpa memicu scroll ulang
+    if (typeof history !== "undefined") history.replaceState(null, "", `#${id}`);
+  };
+
   if (headings.length < 2) return null;
   return (
     <nav
@@ -88,13 +120,25 @@ function TOC({ headings }: { headings: Heading[] }) {
       </button>
       {open && (
         <ol className="list-decimal space-y-1.5 border-t border-border px-6 py-3 pl-8 text-sm marker:text-primary">
-          {headings.map((h) => (
-            <li key={h.id} className={h.level === 3 ? "ml-4" : ""}>
-              <a href={`#${h.id}`} className="hover:text-primary hover:underline">
-                {h.text}
-              </a>
-            </li>
-          ))}
+          {headings.map((h) => {
+            const isActive = h.id === activeId;
+            return (
+              <li key={h.id} className={h.level === 3 ? "ml-4" : ""}>
+                <a
+                  href={`#${h.id}`}
+                  onClick={(e) => jump(e, h.id)}
+                  aria-current={isActive ? "location" : undefined}
+                  className={`block rounded px-1 py-0.5 transition-colors hover:text-primary hover:underline ${
+                    isActive
+                      ? "bg-primary/10 font-semibold text-primary"
+                      : "text-foreground/80"
+                  }`}
+                >
+                  {h.text}
+                </a>
+              </li>
+            );
+          })}
         </ol>
       )}
     </nav>
@@ -219,45 +263,36 @@ export function BlogContent({ content }: { content: string }) {
       const header = splitRow(rows[0]);
       const body = rows.slice(1).filter((r) => !isTableSep(r)).map(splitRow);
       blocks.push(
-        <div key={key++} className="my-5 w-full">
-          {/* Desktop / tablet: tabel penuh, tanpa scroll horizontal */}
-          <table className="hidden w-full table-fixed border-collapse overflow-hidden rounded-lg border border-border text-sm sm:table">
-            <thead>
-              <tr className="bg-muted/70">
-                {header.map((c, j) => (
-                  <th key={j} className="break-words border-b border-border px-3 py-2 text-left font-semibold align-top">
-                    {renderInline(c)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {body.map((row, r) => (
-                <tr key={r} className="even:bg-muted/30">
-                  {row.map((c, j) => (
-                    <td key={j} className="break-words border-b border-border px-3 py-2 align-top last:border-b-0">
-                      {renderInline(c)}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          {/* Mobile: kartu bertumpuk agar tidak perlu geser kiri-kanan */}
-          <div className="space-y-3 sm:hidden">
-            {body.map((row, r) => (
-              <div key={r} className="overflow-hidden rounded-lg border border-border bg-card">
-                {row.map((c, j) => (
-                  <div key={j} className="grid grid-cols-[minmax(0,40%)_minmax(0,60%)] gap-2 border-b border-border p-3 last:border-b-0">
-                    <div className="break-words text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                      {renderInline(header[j] ?? "")}
-                    </div>
-                    <div className="break-words text-sm">{renderInline(c)}</div>
+        <div
+          key={key++}
+          role="table"
+          aria-label="Tabel data"
+          className="my-5 w-full space-y-3"
+        >
+          {body.map((row, r) => (
+            <div
+              key={r}
+              role="row"
+              className="overflow-hidden rounded-lg border border-border bg-card shadow-sm"
+            >
+              {row.map((c, j) => (
+                <div
+                  key={j}
+                  className="grid grid-cols-[minmax(0,40%)_minmax(0,60%)] items-start gap-3 border-b border-border p-3 last:border-b-0 sm:grid-cols-[minmax(0,32%)_minmax(0,68%)] sm:gap-4 sm:px-4 sm:py-3"
+                >
+                  <div
+                    role="rowheader"
+                    className="break-words text-[11px] font-semibold uppercase tracking-wide text-muted-foreground sm:text-xs"
+                  >
+                    {renderInline(header[j] ?? "")}
                   </div>
-                ))}
-              </div>
-            ))}
-          </div>
+                  <div role="cell" className="break-words text-sm sm:text-[0.95rem]">
+                    {renderInline(c)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>,
       );
       continue;

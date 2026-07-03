@@ -24,6 +24,27 @@ export const SITE = {
     // ke src/assets lalu set path-nya di sini.
     qrImage: "" as string,
   },
+  // === Verifikasi search engine & AdSense ===
+  // Isi kode verifikasi di sini, lalu commit. Meta tag otomatis ter-render
+  // di <head> semua halaman lewat src/routes/__root.tsx.
+  //
+  //  - google:   Google Search Console → "HTML tag" → salin isi content=""
+  //              contoh: "abc123xyz..."
+  //  - bing:     Bing Webmaster Tools → Meta tag → salin isi content=""
+  //  - yandex:   Yandex Webmaster (opsional)
+  //  - pinterest, facebook: opsional, isi kalau memang mau diverifikasi
+  //  - adsensePublisherId:
+  //              ID publisher AdSense lengkap "ca-pub-XXXXXXXXXXXXXXXX".
+  //              Setelah diisi, meta google-adsense-account + script AdSense
+  //              utama akan otomatis dimuat sehingga proses review lebih cepat.
+  verification: {
+    google: "",
+    bing: "",
+    yandex: "",
+    pinterest: "",
+    facebook: "",
+    adsensePublisherId: "",
+  },
 } as const;
 
 export const csvUrl = () => {
