@@ -24,6 +24,13 @@ export interface BlogPost {
   description: string;
   date: string; // ISO YYYY-MM-DD
   author?: string;
+  /**
+   * URL absolut gambar cover artikel (mis. dari Blogger:
+   * https://blogger.googleusercontent.com/img/.../gambar.png).
+   * Digunakan sebagai thumbnail di daftar blog, hero di halaman artikel,
+   * dan otomatis dipakai sebagai og:image / twitter:image saat dibagikan
+   * ke media sosial (Facebook, X/Twitter, WhatsApp, dll).
+   */
   cover?: string;
   tags?: string[];
   content: string; // markdown ringan — lihat panduan di atas
