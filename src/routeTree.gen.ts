@@ -18,6 +18,7 @@ import { Route as KamusRouteImport } from './routes/kamus'
 import { Route as CariRouteImport } from './routes/cari'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as PageDisclaimerRouteImport } from './routes/page.disclaimer'
 import { Route as KataSlugRouteImport } from './routes/kata.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
@@ -66,6 +67,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PageDisclaimerRoute = PageDisclaimerRouteImport.update({
+  id: '/page/disclaimer',
+  path: '/page/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KataSlugRoute = KataSlugRouteImport.update({
   id: '/kata/$slug',
   path: '/kata/$slug',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/tentang': typeof TentangRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/kata/$slug': typeof KataSlugRoute
+  '/page/disclaimer': typeof PageDisclaimerRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/tentang': typeof TentangRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/kata/$slug': typeof KataSlugRoute
+  '/page/disclaimer': typeof PageDisclaimerRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/tentang': typeof TentangRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/kata/$slug': typeof KataSlugRoute
+  '/page/disclaimer': typeof PageDisclaimerRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/tentang'
     | '/blog/$slug'
     | '/kata/$slug'
+    | '/page/disclaimer'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/tentang'
     | '/blog/$slug'
     | '/kata/$slug'
+    | '/page/disclaimer'
     | '/blog'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/tentang'
     | '/blog/$slug'
     | '/kata/$slug'
+    | '/page/disclaimer'
     | '/blog/'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   TentangRoute: typeof TentangRoute
   BlogSlugRoute: typeof BlogSlugRoute
   KataSlugRoute: typeof KataSlugRoute
+  PageDisclaimerRoute: typeof PageDisclaimerRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
@@ -238,6 +251,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/page/disclaimer': {
+      id: '/page/disclaimer'
+      path: '/page/disclaimer'
+      fullPath: '/page/disclaimer'
+      preLoaderRoute: typeof PageDisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/kata/$slug': {
       id: '/kata/$slug'
       path: '/kata/$slug'
@@ -266,8 +286,19 @@ const rootRouteChildren: RootRouteChildren = {
   TentangRoute: TentangRoute,
   BlogSlugRoute: BlogSlugRoute,
   KataSlugRoute: KataSlugRoute,
+  PageDisclaimerRoute: PageDisclaimerRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
