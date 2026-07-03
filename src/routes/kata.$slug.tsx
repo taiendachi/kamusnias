@@ -31,14 +31,14 @@ export const Route = createFileRoute("/kata/$slug")({
     const jenis = jenisLabel(entry.jenis);
     const title = `${entry.indo} dalam Bahasa Nias = ${entry.nias} — ${SITE.name}`;
     const desc = `Arti "${entry.indo}" dalam Bahasa Nias adalah "${entry.nias}"${jenis ? ` (${jenis})` : ""}. Terjemahan lengkap di ${SITE.longName}.`;
-    const url = `/kata/${params.slug}`;
+    const url = `${SITE.url}/kata/${params.slug}`;
 
     const breadcrumb = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Beranda", item: "/" },
-        { "@type": "ListItem", position: 2, name: "Kamus", item: "/" },
+        { "@type": "ListItem", position: 1, name: "Beranda", item: `${SITE.url}/` },
+        { "@type": "ListItem", position: 2, name: "Kamus", item: `${SITE.url}/kamus` },
         { "@type": "ListItem", position: 3, name: entry.indo, item: url },
       ],
     };
