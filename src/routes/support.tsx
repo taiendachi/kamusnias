@@ -22,8 +22,11 @@ export const Route = createFileRoute("/support")({
   component: SupportPage,
 });
 
+type Wallet = "dana" | "gopay";
+
 function SupportPage() {
   const [copied, setCopied] = useState(false);
+  const [wallet, setWallet] = useState<Wallet>("dana");
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(SITE.support.number);
@@ -31,6 +34,9 @@ function SupportPage() {
       setTimeout(() => setCopied(false), 1800);
     } catch {}
   };
+
+  const qr = wallet === "dana" ? qrDana : qrGopay;
+  const walletLabel = wallet === "dana" ? "DANA" : "GoPay";
 
   return (
     <Layout>
