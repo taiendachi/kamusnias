@@ -34,7 +34,7 @@ Ciri paling fundamental dari bahasa Nias adalah tidak adanya suku kata tertutup.
 
 Konsekuensi terbuka ini memengaruhi morfologi secara besar-besaran, terutama saat penambahan afiks yang memicu perubahan bunyi.
 
-Baca Juga : **[Mengenal Bahasa Nias (Li Niha): Sejarah, Dialek, dan Keunikan](https://kamusniasorid.dachitaien.workers.dev/blog/bahasa-nias-li-niha-dialek-sejarah-dan-keunikan)**
+Baca Juga : **[Mengenal Bahasa Nias (Li Niha): Sejarah, Dialek, dan Keunikan](https://kamusnias.or.id/blog/bahasa-nias-li-niha-dialek-sejarah-dan-keunikan)**
 
 ### 2. Morfologi: Imbuhan dan Fenomena Mutasi Konsonan
 
@@ -85,7 +85,7 @@ Lo i'a gadulo ('Dia tidak makan telur'). Adulo (telur) bermutasi menjadi gadulo 
 
 Fenomena ini disebut ‘marked absolutive’ sangat langka di dunia.
 
-Baca Juga : **[Kumpulan Amaedola Nias (Peribahasa) Terlengkap dan Artinya](https://kamusniasorid.dachitaien.workers.dev/blog/amaedola-peribahasa-nias-dan-artinya)**
+Baca Juga : **[Kumpulan Amaedola Nias (Peribahasa) Terlengkap dan Artinya](https://kamusnias.or.id/blog/amaedola-peribahasa-nias-dan-artinya)**
 
 ### 5. Perdebatan Ilmiah Mutakhir: Apakah Ini Sungguh Penanda Kasus?
 
@@ -113,7 +113,7 @@ Mengapa Perdebatan Ini Penting? Karena bahasa Nias menjadi ujian bagi teori-teor
 
 Jika Jenkins benar, maka ‘marked absolutive’ bukan kategori tipologis yang valid; jika Brown benar, maka bahasa Nias mewakili tipe bahasa yang selama ini tidak terbayangkan.
 
-Baca Juga : **[Kamus Nias Online: Terjemahan Bahasa Nias (Li Niha) ke Indonesia Lengkap](https://kamusniasorid.dachitaien.workers.dev/blog/kamus-nias-online-terjemahan-bahasa-nias-li-niha-ke-indonesia-lengkap)**
+Baca Juga : **[Kamus Nias Online: Terjemahan Bahasa Nias (Li Niha) ke Indonesia Lengkap](https://kamusnias.or.id/blog/kamus-nias-online-terjemahan-bahasa-nias-li-niha-ke-indonesia-lengkap)**
 
 ### 6. Variasi Dialek: Kompleksitas di Dalam Kompleksitas
 
@@ -128,7 +128,7 @@ Variasi ini menjadikan bahasa Nias sebagai kontinum dialek yang kaya data untuk 
 
 ## Penutup 
 
-**[Struktur bahasa Nias](https://kamusniasorid.dachitaien.workers.dev/)** adalah kaleidoskop fitur langka: suku kata terbuka, mutasi konsonan awal, perdebatan ‘marked absolutive’, dan variasi dialek yang ekstrem. 
+**[Struktur bahasa Nias](https://kamusnias.or.id/)** adalah kaleidoskop fitur langka: suku kata terbuka, mutasi konsonan awal, perdebatan ‘marked absolutive’, dan variasi dialek yang ekstrem. 
 
 Bagi mahasiswa linguistik, bahasa ini menawarkan peluang riset yang masih sangat terbuka. Bagi penutur asli, pemahaman struktural dapat membantu revitalisasi bahasa.
 

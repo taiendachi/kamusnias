@@ -30,7 +30,7 @@ Melalui Amaedola, generasi muda dapat memahami cara berpikir, kebijaksanaan, dan
 
 Banyak Amaedola digunakan dalam percakapan adat, musyawarah keluarga, penyelesaian konflik, hingga berbagai acara tradisional. 
 
-Baca Juga : **[Mengenal Bahasa Nias (Li Niha): Sejarah, Dialek, dan Keunikan](/bahasa-nias-li-niha-dialek-sejarah-dan-keunikan)**
+Baca Juga : **[Mengenal Bahasa Nias (Li Niha): Sejarah, Dialek, dan Keunikan](https://kamusnias.or.id/blog/bahasa-nias-li-niha-dialek-sejarah-dan-keunikan)**
 
 Oleh karena itu, pelestarian dan dokumentasi Amaedola menjadi langkah penting untuk menjaga identitas budaya Nias agar tetap dikenal dan diwariskan kepada generasi mendatang.
 
@@ -105,7 +105,7 @@ Amaedola dalam kategori ini mengajarkan nilai-nilai ini mencerminkan etos kerja 
 
 Peribahasa-peribahasa ini menjadi pedoman moral masyarakat Nias dalam membentuk karakter yang baik, menghargai sesama, dan hidup sesuai norma adat serta nilai-nilai luhur Li Niha.
 
-Baca Juga : **[Kamus Nias Online: Terjemahan Bahasa Nias (Li Niha) ke Indonesia](/kamus-nias-online-terjemahan-bahasa-nias-li-niha-ke-indonesia-lengkap)**
+Baca Juga : **[Kamus Nias Online: Terjemahan Bahasa Nias (Li Niha) ke Indonesia](https://kamusnias.or.id/blog/kamus-nias-online-terjemahan-bahasa-nias-li-niha-ke-indonesia-lengkap)**
 
 ### 3. Kehidupan, Nasib & Kebijaksanaan
 
