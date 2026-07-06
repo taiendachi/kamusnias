@@ -152,12 +152,18 @@ export function Footer() {
             <li><Link to="/saran" className="hover:text-foreground">Form Saran Kata</Link></li>
             <li><Link to="/support" className="hover:text-foreground">Dukung Kami</Link></li>
             <li><Link to="/kontak" className="hover:text-foreground">Kontak</Link></li>
-            <li><a href="/rss.xml" className="hover:text-foreground">RSS Feed</a></li>
           </ul>
         </div>
       </div>
       <div className="border-t border-border px-4 py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {SITE.longName}. Ya'ahowu!
+        Copyright © {new Date().getFullYear()}{" "}
+        <a
+          href="https://kamusnias.or.id"
+          className="font-medium text-foreground hover:text-primary hover:underline"
+        >
+          {SITE.longName}
+        </a>
+        . Ya'ahowu!
       </div>
     </footer>
   );
