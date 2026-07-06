@@ -1,12 +1,17 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 import { Layout } from "@/components/Layout";
+import { LazyInView } from "@/components/LazyInView";
 import { AdSlot } from "@/components/AdSlot";
 import { BlogContent } from "@/components/BlogContent";
-import { ShareButtons } from "@/components/ShareButtons";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS, getPost } from "@/lib/blog";
 import { CalendarDays } from "lucide-react";
+
+const ShareButtons = lazy(() =>
+  import("@/components/ShareButtons").then((m) => ({ default: m.ShareButtons })),
+);
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -142,12 +147,16 @@ function BlogPost() {
           </div>
         )}
 
-        <ShareButtons
-          url={`${SITE.url}/blog/${post.slug}`}
-          title={post.title}
-          description={post.description}
-          image={post.cover || SITE.ogImage}
-        />
+        <LazyInView minHeight={220}>
+          <Suspense fallback={<div className="mt-10 h-40 rounded-xl border border-border bg-muted/40" />}>
+            <ShareButtons
+              url={`${SITE.url}/blog/${post.slug}`}
+              title={post.title}
+              description={post.description}
+              image={post.cover || SITE.ogImage}
+            />
+          </Suspense>
+        </LazyInView>
 
         <AdSlot type="mgid" slot="inArticle" />
 
