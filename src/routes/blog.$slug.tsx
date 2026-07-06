@@ -142,6 +142,13 @@ function BlogPost() {
           </div>
         )}
 
+        <ShareButtons
+          url={`${SITE.url}/blog/${post.slug}`}
+          title={post.title}
+          description={post.description}
+          image={post.cover || SITE.ogImage}
+        />
+
         <AdSlot type="mgid" slot="inArticle" />
 
         {others.length > 0 && (
