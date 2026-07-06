@@ -13,6 +13,7 @@ import { Route as TentangRouteImport } from './routes/tentang'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SaranRouteImport } from './routes/saran'
+import { Route as RssDotxmlRouteImport } from './routes/rss[.]xml'
 import { Route as KontakRouteImport } from './routes/kontak'
 import { Route as KamusRouteImport } from './routes/kamus'
 import { Route as CariRouteImport } from './routes/cari'
@@ -42,6 +43,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const SaranRoute = SaranRouteImport.update({
   id: '/saran',
   path: '/saran',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RssDotxmlRoute = RssDotxmlRouteImport.update({
+  id: '/rss.xml',
+  path: '/rss.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KontakRoute = KontakRouteImport.update({
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/cari': typeof CariRoute
   '/kamus': typeof KamusRoute
   '/kontak': typeof KontakRoute
+  '/rss.xml': typeof RssDotxmlRoute
   '/saran': typeof SaranRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/support': typeof SupportRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/cari': typeof CariRoute
   '/kamus': typeof KamusRoute
   '/kontak': typeof KontakRoute
+  '/rss.xml': typeof RssDotxmlRoute
   '/saran': typeof SaranRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/support': typeof SupportRoute
@@ -133,6 +141,7 @@ export interface FileRoutesById {
   '/cari': typeof CariRoute
   '/kamus': typeof KamusRoute
   '/kontak': typeof KontakRoute
+  '/rss.xml': typeof RssDotxmlRoute
   '/saran': typeof SaranRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/support': typeof SupportRoute
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/cari'
     | '/kamus'
     | '/kontak'
+    | '/rss.xml'
     | '/saran'
     | '/sitemap.xml'
     | '/support'
@@ -167,6 +177,7 @@ export interface FileRouteTypes {
     | '/cari'
     | '/kamus'
     | '/kontak'
+    | '/rss.xml'
     | '/saran'
     | '/sitemap.xml'
     | '/support'
@@ -183,6 +194,7 @@ export interface FileRouteTypes {
     | '/cari'
     | '/kamus'
     | '/kontak'
+    | '/rss.xml'
     | '/saran'
     | '/sitemap.xml'
     | '/support'
@@ -200,6 +212,7 @@ export interface RootRouteChildren {
   CariRoute: typeof CariRoute
   KamusRoute: typeof KamusRoute
   KontakRoute: typeof KontakRoute
+  RssDotxmlRoute: typeof RssDotxmlRoute
   SaranRoute: typeof SaranRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SupportRoute: typeof SupportRoute
@@ -240,6 +253,13 @@ declare module '@tanstack/react-router' {
       path: '/saran'
       fullPath: '/saran'
       preLoaderRoute: typeof SaranRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rss.xml': {
+      id: '/rss.xml'
+      path: '/rss.xml'
+      fullPath: '/rss.xml'
+      preLoaderRoute: typeof RssDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/kontak': {
@@ -320,6 +340,7 @@ const rootRouteChildren: RootRouteChildren = {
   CariRoute: CariRoute,
   KamusRoute: KamusRoute,
   KontakRoute: KontakRoute,
+  RssDotxmlRoute: RssDotxmlRoute,
   SaranRoute: SaranRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SupportRoute: SupportRoute,
