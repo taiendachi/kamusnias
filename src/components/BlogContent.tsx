@@ -61,11 +61,11 @@ function renderInline(text: string): ReactNode {
         );
       }
     } else if (tok.startsWith("**")) {
-      nodes.push(<strong key={i}>{tok.slice(2, -2)}</strong>);
+      nodes.push(<strong key={i}>{renderInline(tok.slice(2, -2))}</strong>);
     } else if (tok.startsWith("`")) {
       nodes.push(<code key={i} className="rounded bg-muted px-1 py-0.5 font-mono text-[0.9em] break-words">{tok.slice(1, -1)}</code>);
     } else {
-      nodes.push(<em key={i}>{tok.slice(1, -1)}</em>);
+      nodes.push(<em key={i}>{renderInline(tok.slice(1, -1))}</em>);
     }
     last = m.index + tok.length;
     i++;
