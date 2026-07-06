@@ -19,7 +19,7 @@ Adat perlu dipertahankan dengan memahami makna awalnya, bukan hanya mempertahank
 
 ## Kenapa Mahar Orang Nias Mahal? Memahami Böwö dalam Adat Perkawinan Nias
 
-Akibat mahar pernikahan Nias terlalu besar mulai terasa ketika sebuah pernikahan yang seharusnya menjadi awal kehidupan baru justru dimulai dengan tekanan ekonomi. 
+Akibat mahar dalam pernikahan Nias terlalu besar mulai terasa ketika sebuah pernikahan yang seharusnya menjadi awal kehidupan baru justru dimulai dengan tekanan ekonomi. 
 
 Pasangan muda harus bekerja bertahun-tahun, meminjam uang, atau menunda pernikahan karena mengejar nilai mahar yang dianggap ideal oleh lingkungan.
 
