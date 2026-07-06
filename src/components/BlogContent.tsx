@@ -21,7 +21,7 @@ function slugify(s: string): string {
 }
 
 function renderInline(text: string): ReactNode {
-  const re = /(!\[[^\]]*\]\([^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g;
+  const re = /(!\[[^\]]*\]\([^)]+\)|\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g;
   const nodes: ReactNode[] = [];
   let last = 0;
   let m: RegExpExecArray | null;
@@ -42,6 +42,22 @@ function renderInline(text: string): ReactNode {
             referrerPolicy="no-referrer"
             className="my-4 h-auto w-full rounded-lg border border-border object-cover"
           />,
+        );
+      }
+    } else if (tok.startsWith("[")) {
+      const lm = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(tok);
+      if (lm) {
+        const href = lm[2];
+        const isExternal = /^https?:\/\//i.test(href) && !/kamusnias\.or\.id/i.test(href);
+        nodes.push(
+          <a
+            key={i}
+            href={href}
+            {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            className="font-medium text-primary underline decoration-primary/40 underline-offset-2 hover:decoration-primary"
+          >
+            {renderInline(lm[1])}
+          </a>,
         );
       }
     } else if (tok.startsWith("**")) {
