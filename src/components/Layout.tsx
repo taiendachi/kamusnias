@@ -152,6 +152,7 @@ export function Footer() {
             <li><Link to="/saran" className="hover:text-foreground">Form Saran Kata</Link></li>
             <li><Link to="/support" className="hover:text-foreground">Dukung Kami</Link></li>
             <li><Link to="/kontak" className="hover:text-foreground">Kontak</Link></li>
+            <li><a href="/rss.xml" className="hover:text-foreground">RSS Feed</a></li>
           </ul>
         </div>
       </div>
