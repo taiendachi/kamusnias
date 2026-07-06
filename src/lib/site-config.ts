@@ -9,7 +9,7 @@ export const SITE = {
   url: "https://kamusnias.lovable.app",
   ogImage: "https://kamusnias.lovable.app/favicon.png",
   locale: "id_ID",
-  contactEmail: "info.kamusnias@gmail.com",
+  contactEmail: "halo@kamusnias.or.id",
   // Google Sheet (must be published / shareable). Uses gviz CSV endpoint — no API key needed.
   sheetId: "1z-MNQCt0Id7BayxJHJx8N_JQ06JtZvBtGKWLs9tb8-8",
   sheetName: "",
