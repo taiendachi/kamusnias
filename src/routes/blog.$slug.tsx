@@ -146,12 +146,16 @@ function BlogPost() {
           </div>
         )}
 
-        <ShareButtons
-          url={`${SITE.url}/blog/${post.slug}`}
-          title={post.title}
-          description={post.description}
-          image={post.cover || SITE.ogImage}
-        />
+        <LazyInView minHeight={220}>
+          <Suspense fallback={<div className="mt-10 h-40 rounded-xl border border-border bg-muted/40" />}>
+            <ShareButtons
+              url={`${SITE.url}/blog/${post.slug}`}
+              title={post.title}
+              description={post.description}
+              image={post.cover || SITE.ogImage}
+            />
+          </Suspense>
+        </LazyInView>
 
         <AdSlot type="mgid" slot="inArticle" />
 
