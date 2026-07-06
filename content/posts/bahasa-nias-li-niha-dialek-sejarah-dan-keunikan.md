@@ -169,7 +169,7 @@ Di era digital dan globalisasi, Bahasa Indonesia menjadi bahasa utama dalam pend
 
 Akibatnya, penggunaan Bahasa Nias di kalangan generasi muda mulai mengalami penurunan di beberapa wilayah.
 
-Salah satu upaya tersebut adalah hadirnya **[kamusnias.or.id](https://bahasanias.or.id/)**, sebuah platform yang menyediakan kamus dan berbagai informasi edukatif seputar Bahasa Nias (Li Niha).
+Salah satu upaya tersebut adalah hadirnya **[kamusnias.or.id](https://kamusnias.or.id/)**, sebuah platform yang menyediakan kamus dan berbagai informasi edukatif seputar Bahasa Nias (Li Niha).
 
 Meski demikian, Li Niha masih menjadi bahasa yang hidup dan digunakan dalam keluarga, kegiatan adat, upacara budaya, serta kehidupan keagamaan masyarakat Nias.
 
