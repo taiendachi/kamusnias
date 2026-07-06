@@ -2,7 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { SITE } from "@/lib/site-config";
-import { Heart, Copy, Check, QrCode } from "lucide-react";
+import { Heart, Copy, Check } from "lucide-react";
+import qrDana from "@/assets/qr-dana.jpeg.asset.json";
+import qrGopay from "@/assets/qr-gopay.jpeg.asset.json";
 
 const title = `Dukung Kami — ${SITE.longName}`;
 const desc = `Dukung ${SITE.longName} agar tetap gratis dan berkembang. Donasi sukarela via QRIS — satu QR untuk GoPay & DANA (${SITE.support.numberDisplay}).`;
@@ -20,8 +22,11 @@ export const Route = createFileRoute("/support")({
   component: SupportPage,
 });
 
+type Wallet = "dana" | "gopay";
+
 function SupportPage() {
   const [copied, setCopied] = useState(false);
+  const [wallet, setWallet] = useState<Wallet>("dana");
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(SITE.support.number);
@@ -29,6 +34,9 @@ function SupportPage() {
       setTimeout(() => setCopied(false), 1800);
     } catch {}
   };
+
+  const qr = wallet === "dana" ? qrDana : qrGopay;
+  const walletLabel = wallet === "dana" ? "DANA" : "GoPay";
 
   return (
     <Layout>
@@ -44,34 +52,48 @@ function SupportPage() {
 
       <div className="mx-auto grid max-w-4xl gap-6 px-4 py-10 md:grid-cols-2">
         <div className="rounded-xl border border-border bg-card p-6 text-center">
-          <h2 className="font-serif text-xl font-bold">Scan QRIS</h2>
+          <h2 className="font-serif text-xl font-bold">Scan QR — DANA & GoPay</h2>
           <p className="mt-1 text-xs text-muted-foreground">
-            Satu QR untuk semua: GoPay, DANA, OVO, ShopeePay, dan aplikasi bank.
+            Satu tujuan, nomor <span className="font-semibold">{SITE.support.numberDisplay}</span>.
+            Pilih aplikasi yang Anda pakai, lalu pindai QR di bawah.
           </p>
-          {SITE.support.qrImage ? (
-            <img
-              src={SITE.support.qrImage}
-              alt={`QRIS donasi ${SITE.longName} — ${SITE.support.numberDisplay}`}
-              width={256}
-              height={256}
-              className="mx-auto mt-4 h-auto w-64 rounded-lg border border-border"
-              loading="lazy"
-              decoding="async"
-            />
-          ) : (
-            <div className="mx-auto mt-4 grid h-64 w-64 place-items-center rounded-lg border-2 border-dashed border-border bg-muted/40 text-center text-xs text-muted-foreground">
-              <div>
-                <QrCode className="mx-auto h-8 w-8 opacity-50" />
-                <div className="mt-2 px-4">
-                  QR Code QRIS akan ditampilkan di sini. Upload file QRIS ke{" "}
-                  <code>src/assets/</code> dan set <code>SITE.support.qrImage</code>.
-                </div>
-              </div>
-            </div>
-          )}
+
+          <div
+            role="tablist"
+            aria-label="Pilih dompet digital"
+            className="mx-auto mt-4 inline-flex rounded-full border border-border bg-muted p-1 text-xs font-semibold"
+          >
+            {(["dana", "gopay"] as const).map((w) => (
+              <button
+                key={w}
+                role="tab"
+                aria-selected={wallet === w}
+                onClick={() => setWallet(w)}
+                className={`rounded-full px-4 py-1.5 transition ${
+                  wallet === w
+                    ? "bg-background text-primary shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {w === "dana" ? "DANA" : "GoPay"}
+              </button>
+            ))}
+          </div>
+
+          <img
+            src={qr.url}
+            alt={`QR ${walletLabel} donasi ${SITE.longName} — ${SITE.support.numberDisplay}`}
+            width={256}
+            height={256}
+            className="mx-auto mt-4 h-auto w-64 rounded-lg border border-border bg-white"
+            loading="lazy"
+            decoding="async"
+          />
+
           <p className="mt-4 text-xs text-muted-foreground">
-            Buka aplikasi GoPay, DANA, atau e-wallet lainnya, lalu pindai QRIS di atas.
-            Dana masuk ke nomor {SITE.support.numberDisplay}.
+            Buka aplikasi <span className="font-semibold">{walletLabel}</span>, pilih menu
+            Scan/Bayar, lalu pindai QR di atas. Dana masuk ke nomor{" "}
+            {SITE.support.numberDisplay} a.n. {SITE.support.accountName}.
           </p>
         </div>
 
