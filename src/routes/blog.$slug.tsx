@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 import { Layout } from "@/components/Layout";
+import { LazyInView } from "@/components/LazyInView";
 import { AdSlot } from "@/components/AdSlot";
 import { BlogContent } from "@/components/BlogContent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
