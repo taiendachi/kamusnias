@@ -125,7 +125,7 @@ export function Header() {
 export function Footer() {
   return (
     <footer className="mt-16 border-t border-border bg-muted/40">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 sm:grid-cols-2 md:gap-8 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
         <div>
           <img src={LOGO_URL} alt={SITE.longName} className="h-10 w-auto" loading="lazy" />
           <p className="mt-3 text-sm text-muted-foreground">{SITE.description}</p>
@@ -152,6 +152,7 @@ export function Footer() {
             <li><Link to="/saran" className="hover:text-foreground">Form Saran Kata</Link></li>
             <li><Link to="/support" className="hover:text-foreground">Dukung Kami</Link></li>
             <li><Link to="/kontak" className="hover:text-foreground">Kontak</Link></li>
+            <li><a href="/rss.xml" className="hover:text-foreground">RSS Feed</a></li>
           </ul>
         </div>
       </div>
