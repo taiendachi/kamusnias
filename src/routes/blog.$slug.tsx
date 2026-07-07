@@ -125,16 +125,18 @@ function BlogPost() {
           <p className="mt-3 text-lg text-muted-foreground">{post.description}</p>
           {post.cover && (
             <img
-              src={post.cover}
+              src={normalizeCover(post.cover)}
               alt={post.title}
               width={1200}
               height={630}
               loading="eager"
               decoding="async"
               referrerPolicy="no-referrer"
+              onError={(e) => coverErrorHandler(e, post.cover!, 1200)}
               className="mt-5 aspect-[1200/630] w-full rounded-xl border border-border object-cover"
             />
           )}
+
         </header>
 
         <AdSlot type="adsense" slot="inArticle" />
