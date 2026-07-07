@@ -14,10 +14,10 @@ export const Route = createFileRoute("/support")({
     meta: [
       { title }, { name: "description", content: desc },
       { property: "og:title", content: title }, { property: "og:description", content: desc },
-      { property: "og:url", content: "/support" }, { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://kamusnias.or.id/support" }, { property: "og:type", content: "website" },
       { name: "twitter:title", content: title }, { name: "twitter:description", content: desc },
     ],
-    links: [{ rel: "canonical", href: "/support" }],
+    links: [{ rel: "canonical", href: "https://kamusnias.or.id/support" }],
   }),
   component: SupportPage,
 });

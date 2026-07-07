@@ -12,9 +12,9 @@ export const Route = createFileRoute("/kontak")({
     meta: [
       { title }, { name: "description", content: desc },
       { property: "og:title", content: title }, { property: "og:description", content: desc },
-      { property: "og:url", content: "/kontak" }, { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://kamusnias.or.id/kontak" }, { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/kontak" }],
+    links: [{ rel: "canonical", href: "https://kamusnias.or.id/kontak" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify({

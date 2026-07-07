@@ -6,8 +6,9 @@ export const SITE = {
   tagline: "Kamus Bahasa Nias terlengkap — Indonesia ⇄ Nias (Li Niha)",
   description:
     "Kamus Nias - Li Niha. Kamus Bahasa Nias online terlengkap untuk terjemahan Indonesia ⇄ Nias, dilengkapi jenis kata, contoh, dan artikel seputar Bahasa Nias.",
-  url: "https://kamusnias.lovable.app",
-  ogImage: "https://kamusnias.lovable.app/favicon.png",
+  url: "https://kamusnias.or.id",
+  ogImage: "https://kamusnias.or.id/favicon.png",
+
   locale: "id_ID",
   contactEmail: "halo@kamusnias.or.id",
   // Google Sheet (must be published / shareable). Uses gviz CSV endpoint — no API key needed.

@@ -22,9 +22,9 @@ export const Route = createFileRoute("/cari")({
         { name: "robots", content: "noindex, follow" },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
-        { property: "og:url", content: "/cari" },
+        { property: "og:url", content: "https://kamusnias.or.id/cari" },
       ],
-      links: [{ rel: "canonical", href: "/cari" }],
+      links: [{ rel: "canonical", href: "https://kamusnias.or.id/cari" }],
     };
   },
   component: SearchPage,

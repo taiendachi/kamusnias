@@ -11,9 +11,9 @@ export const Route = createFileRoute("/tentang")({
     meta: [
       { title }, { name: "description", content: desc },
       { property: "og:title", content: title }, { property: "og:description", content: desc },
-      { property: "og:url", content: "/tentang" }, { property: "og:type", content: "article" },
+      { property: "og:url", content: "https://kamusnias.or.id/tentang" }, { property: "og:type", content: "article" },
     ],
-    links: [{ rel: "canonical", href: "/tentang" }],
+    links: [{ rel: "canonical", href: "https://kamusnias.or.id/tentang" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify({
