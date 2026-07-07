@@ -20,7 +20,7 @@ export const SITE = {
   support: {
     number: "085213307191",
     numberDisplay: "0852-1330-7191",
-    accountName: "Kamus Nias",
+    accountName: "Taien Dachi",
     // Upload QR QRIS (satu QR untuk GoPay, DANA, OVO, ShopeePay, dll)
     // ke src/assets lalu set path-nya di sini.
     qrImage: "" as string,
