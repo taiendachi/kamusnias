@@ -15,9 +15,9 @@ export const Route = createFileRoute("/kamus")({
     meta: [
       { title }, { name: "description", content: desc },
       { property: "og:title", content: title }, { property: "og:description", content: desc },
-      { property: "og:url", content: "/kamus" }, { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://kamusnias.or.id/kamus" }, { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/kamus" }],
+    links: [{ rel: "canonical", href: "https://kamusnias.or.id/kamus" }],
   }),
   component: KamusPage,
 });
