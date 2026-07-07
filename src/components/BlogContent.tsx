@@ -279,38 +279,66 @@ export function BlogContent({ content }: { content: string }) {
       const header = splitRow(rows[0]);
       const body = rows.slice(1).filter((r) => !isTableSep(r)).map(splitRow);
       blocks.push(
-        <div key={key++} className="my-5 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
-          <table className="w-full border-collapse text-sm md:text-[0.95rem]">
-            <thead>
-              <tr className="bg-muted/60">
-                {header.map((h, j) => (
-                  <th
-                    key={j}
-                    scope="col"
-                    className="border border-border px-3 py-2 text-left align-top font-semibold text-foreground"
-                  >
-                    {renderInline(h)}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {body.map((row, r) => (
-                <tr key={r} className="even:bg-muted/30">
-                  {row.map((c, j) => (
-                    <td
+        <div key={key++} className="my-5">
+          {/* Desktop: real table (≥sm) */}
+          <div className="hidden sm:block">
+            <table className="w-full table-fixed border-collapse text-sm md:text-[0.95rem]">
+              <thead>
+                <tr className="bg-muted/60">
+                  {header.map((h, j) => (
+                    <th
                       key={j}
-                      className="border border-border px-3 py-2 align-top leading-relaxed"
+                      scope="col"
+                      className="border border-border px-3 py-2 text-left align-top font-semibold text-foreground"
                     >
-                      {renderInline(c)}
-                    </td>
+                      {renderInline(h)}
+                    </th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {body.map((row, r) => (
+                  <tr key={r} className="even:bg-muted/30">
+                    {row.map((c, j) => (
+                      <td
+                        key={j}
+                        className="break-words border border-border px-3 py-2 align-top leading-relaxed"
+                      >
+                        {renderInline(c)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile: stacked cards, tanpa scroll horizontal */}
+          <div className="space-y-3 sm:hidden">
+            {body.map((row, r) => (
+              <div
+                key={r}
+                className="overflow-hidden rounded-lg border border-border bg-card shadow-sm"
+              >
+                {row.map((c, j) => (
+                  <div
+                    key={j}
+                    className="border-b border-border p-3 last:border-b-0"
+                  >
+                    <div className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                      {renderInline(header[j] ?? "")}
+                    </div>
+                    <div className="mt-1 break-words text-sm leading-relaxed">
+                      {renderInline(c)}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>,
       );
+
 
       continue;
     }
