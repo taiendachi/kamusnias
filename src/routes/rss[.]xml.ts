@@ -3,7 +3,7 @@ import type {} from "@tanstack/react-start";
 import { BLOG_POSTS } from "@/lib/blog";
 import { SITE } from "@/lib/site-config";
 
-const BASE_URL = "https://kamusnias.lovable.app";
+const BASE_URL = "https://kamusnias.or.id";
 
 function escapeXml(s: string): string {
   return s
