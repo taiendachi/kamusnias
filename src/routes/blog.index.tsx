@@ -4,7 +4,9 @@ import { AdSlot } from "@/components/AdSlot";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS } from "@/lib/blog";
+import { normalizeCover, coverErrorHandler } from "@/lib/cover-image";
 import { CalendarDays, ArrowRight } from "lucide-react";
+
 
 const title = `Blog — ${SITE.longName}`;
 const desc = `Artikel seputar Bahasa Nias (Li Niha), budaya, dan pembelajaran kosakata di ${SITE.longName}.`;
