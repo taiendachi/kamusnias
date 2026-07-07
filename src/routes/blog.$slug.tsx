@@ -177,14 +177,16 @@ function BlogPost() {
                   >
                     {p.cover && (
                       <img
-                        src={p.cover}
+                        src={normalizeCover(p.cover)}
                         alt={p.title}
                         loading="lazy"
                         decoding="async"
                         referrerPolicy="no-referrer"
+                        onError={(e) => coverErrorHandler(e, p.cover!, 640)}
                         className="aspect-[16/9] w-full object-cover"
                       />
                     )}
+
                     <div className="p-4">
                       <div className="font-semibold group-hover:text-primary">{p.title}</div>
                       <div className="mt-1 line-clamp-2 text-xs text-muted-foreground">{p.description}</div>
