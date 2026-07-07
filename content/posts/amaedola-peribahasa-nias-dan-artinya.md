@@ -10,7 +10,7 @@ tags: ["Peribahasa Nias", "Amaedola Li Niha", "budaya Nias", "kearifan lokal Nia
 thumbnail: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtKUgkJhhKZU03MGb96lotsC885B1ODG138zs3EKEHG_A-URp7Aj-scFKwWm7CFD4d6gQaqXcIiPI-8iXSFxmJbbyVtMSSWSp9S4fI96WtyXZ0COoqWaIt_EU4g-rQ1EC2RBeXoLJd5UNP-tvuJ9djeGW8dVlBIKvwCT_flV0vlwUyEV3tOE3fUAPxlZ8/s16000/Kumpulan%20Amaedola%20Nias%20(Peribahasa)%20Terlengkap%20dan%20Artinya.webp"
 ---
 
-**kamusnias.or.id** - Selain terkenal dengan lompat batu dan kekayaan budayanya, Nias (Tanö Niha) juga menyimpan kebijaksanaan luar biasa dalam bentuk peribahasa atau yang kita sebut Amaedola. 
+**kamusnias.or.id** - Selain terkenal dengan tradisi lompat batu dan kekayaan budayanya, Nias (Tanö Niha) juga menyimpan kebijaksanaan luar biasa dalam bentuk peribahasa atau yang kita sebut Amaedola. 
 
 Bagi masyarakat Nias, Amaedola bukan sekadar kata-kata indah, melainkan pedoman hidup, nasehat, hingga sindiran halus yang penuh makna.
 
