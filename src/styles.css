@@ -198,3 +198,16 @@
   .blog-table th,
   .blog-table td { padding: 0.45rem 0.4rem; }
 }
+
+/* Kolom pertama (No) dipaskan — cukup sekedar angka, tidak makan ruang. */
+.blog-table th:first-child,
+.blog-table td:first-child {
+  width: 2.75rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted-foreground);
+}
+@media (max-width: 640px) {
+  .blog-table th:first-child,
+  .blog-table td:first-child { width: 2.25rem; padding-left: 0.35rem; padding-right: 0.35rem; }
+}
