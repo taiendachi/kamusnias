@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { SITE } from "@/lib/site-config";
 import { Heart, Copy, Check } from "lucide-react";
-import qrDana from "@/assets/qr-dana.jpeg.asset.json";
-import qrGopay from "@/assets/qr-gopay.jpeg.asset.json";
+const qrDana = { url: "/qr-dana.jpeg" };
+const qrGopay = { url: "/qr-gopay.jpeg" };
+
 
 const title = `Dukung Kami — ${SITE.longName}`;
 const desc = `Dukung ${SITE.longName} agar tetap gratis dan berkembang. Donasi sukarela via QRIS — satu QR untuk GoPay & DANA (${SITE.support.numberDisplay}).`;
