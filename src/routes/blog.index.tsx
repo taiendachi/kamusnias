@@ -69,14 +69,16 @@ function BlogIndex() {
               >
                 {p.cover && (
                   <img
-                    src={p.cover}
+                    src={normalizeCover(p.cover)}
                     alt={p.title}
                     loading="lazy"
                     decoding="async"
                     referrerPolicy="no-referrer"
+                    onError={(e) => coverErrorHandler(e, p.cover!, 640)}
                     className="aspect-[16/9] w-full object-cover"
                   />
                 )}
+
                 <div className="flex flex-1 flex-col p-5">
                   <div className="flex items-center gap-2 text-[11px] uppercase tracking-wider text-muted-foreground">
                     <CalendarDays className="h-3 w-3" />
