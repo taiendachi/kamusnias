@@ -7,7 +7,9 @@ import { BlogContent } from "@/components/BlogContent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS, getPost } from "@/lib/blog";
+import { normalizeCover, coverErrorHandler } from "@/lib/cover-image";
 import { CalendarDays } from "lucide-react";
+
 
 const ShareButtons = lazy(() =>
   import("@/components/ShareButtons").then((m) => ({ default: m.ShareButtons })),
