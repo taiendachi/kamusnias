@@ -7,7 +7,9 @@ import { BlogContent } from "@/components/BlogContent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS, getPost } from "@/lib/blog";
+import { normalizeCover, coverErrorHandler } from "@/lib/cover-image";
 import { CalendarDays } from "lucide-react";
+
 
 const ShareButtons = lazy(() =>
   import("@/components/ShareButtons").then((m) => ({ default: m.ShareButtons })),
@@ -123,16 +125,18 @@ function BlogPost() {
           <p className="mt-3 text-lg text-muted-foreground">{post.description}</p>
           {post.cover && (
             <img
-              src={post.cover}
+              src={normalizeCover(post.cover)}
               alt={post.title}
               width={1200}
               height={630}
               loading="eager"
               decoding="async"
               referrerPolicy="no-referrer"
+              onError={(e) => coverErrorHandler(e, post.cover!, 1200)}
               className="mt-5 aspect-[1200/630] w-full rounded-xl border border-border object-cover"
             />
           )}
+
         </header>
 
         <AdSlot type="adsense" slot="inArticle" />
@@ -173,14 +177,16 @@ function BlogPost() {
                   >
                     {p.cover && (
                       <img
-                        src={p.cover}
+                        src={normalizeCover(p.cover)}
                         alt={p.title}
                         loading="lazy"
                         decoding="async"
                         referrerPolicy="no-referrer"
+                        onError={(e) => coverErrorHandler(e, p.cover!, 640)}
                         className="aspect-[16/9] w-full object-cover"
                       />
                     )}
+
                     <div className="p-4">
                       <div className="font-semibold group-hover:text-primary">{p.title}</div>
                       <div className="mt-1 line-clamp-2 text-xs text-muted-foreground">{p.description}</div>
