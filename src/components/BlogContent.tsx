@@ -279,38 +279,39 @@ export function BlogContent({ content }: { content: string }) {
       const header = splitRow(rows[0]);
       const body = rows.slice(1).filter((r) => !isTableSep(r)).map(splitRow);
       blocks.push(
-        <div
-          key={key++}
-          role="table"
-          aria-label="Tabel data"
-          className="my-5 w-full space-y-3"
-        >
-          {body.map((row, r) => (
-            <div
-              key={r}
-              role="row"
-              className="overflow-hidden rounded-lg border border-border bg-card shadow-sm"
-            >
-              {row.map((c, j) => (
-                <div
-                  key={j}
-                  className="grid grid-cols-[minmax(0,40%)_minmax(0,60%)] items-start gap-3 border-b border-border p-3 last:border-b-0 sm:grid-cols-[minmax(0,32%)_minmax(0,68%)] sm:gap-4 sm:px-4 sm:py-3"
-                >
-                  <div
-                    role="rowheader"
-                    className="break-words text-[11px] font-semibold uppercase tracking-wide text-muted-foreground sm:text-xs"
+        <div key={key++} className="my-5 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+          <table className="w-full border-collapse text-sm md:text-[0.95rem]">
+            <thead>
+              <tr className="bg-muted/60">
+                {header.map((h, j) => (
+                  <th
+                    key={j}
+                    scope="col"
+                    className="border border-border px-3 py-2 text-left align-top font-semibold text-foreground"
                   >
-                    {renderInline(header[j] ?? "")}
-                  </div>
-                  <div role="cell" className="break-words text-sm sm:text-[0.95rem]">
-                    {renderInline(c)}
-                  </div>
-                </div>
+                    {renderInline(h)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {body.map((row, r) => (
+                <tr key={r} className="even:bg-muted/30">
+                  {row.map((c, j) => (
+                    <td
+                      key={j}
+                      className="border border-border px-3 py-2 align-top leading-relaxed"
+                    >
+                      {renderInline(c)}
+                    </td>
+                  ))}
+                </tr>
               ))}
-            </div>
-          ))}
+            </tbody>
+          </table>
         </div>,
       );
+
       continue;
     }
 
