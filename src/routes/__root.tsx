@@ -63,16 +63,20 @@ const orgJsonLd = {
   "@type": "WebSite",
   name: SITE.longName,
   alternateName: SITE.name,
-  url: "/",
+  url: SITE.url,
   inLanguage: ["id", "nia"],
   potentialAction: {
     "@type": "SearchAction",
-    target: "/cari?q={search_term_string}",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE.url}/cari?q={search_term_string}`,
+    },
     "query-input": "required name=search_term_string",
   },
   publisher: {
     "@type": "Organization",
     name: SITE.organization,
+    url: SITE.url,
   },
 };
 

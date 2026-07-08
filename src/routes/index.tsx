@@ -23,7 +23,7 @@ const homeJsonLd = {
   name: `${SITE.longName} — ${SITE.tagline}`,
   description: SITE.description,
   inLanguage: "id",
-  isPartOf: { "@type": "WebSite", name: SITE.longName, url: "/" },
+  isPartOf: { "@type": "WebSite", name: SITE.longName, url: SITE.url },
   speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".hero-sub"] },
 };
 
