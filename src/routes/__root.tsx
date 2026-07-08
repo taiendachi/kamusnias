@@ -60,24 +60,47 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 const orgJsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: SITE.longName,
-  alternateName: SITE.name,
-  url: SITE.url,
-  inLanguage: ["id", "nia"],
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${SITE.url}/cari?q={search_term_string}`,
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE.url}/#website`,
+      name: SITE.longName,
+      alternateName: SITE.name,
+      url: SITE.url,
+      inLanguage: ["id", "nia"],
+      description: SITE.description,
+      publisher: { "@id": `${SITE.url}/#organization` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE.url}/cari?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
     },
-    "query-input": "required name=search_term_string",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: SITE.organization,
-    url: SITE.url,
-  },
+    {
+      "@type": "Organization",
+      "@id": `${SITE.url}/#organization`,
+      name: SITE.organization,
+      url: SITE.url,
+      logo: {
+        "@type": "ImageObject",
+        "@id": `${SITE.url}/#logo`,
+        url: `${SITE.url}/kamus-nias-logo.png`,
+        width: 512,
+        height: 512,
+        caption: SITE.longName,
+      },
+      image: { "@id": `${SITE.url}/#logo` },
+      email: SITE.contactEmail,
+      areaServed: { "@type": "Place", name: "Indonesia" },
+      knowsLanguage: [
+        { "@type": "Language", name: "Indonesian", alternateName: "id" },
+        { "@type": "Language", name: "Nias (Li Niha)", alternateName: "nia" },
+      ],
+    },
+  ],
 };
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -113,7 +136,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { name: "theme-color", content: "#1e6091" },
         { name: "geo.placename", content: "Nias, Indonesia" },
         { name: "geo.region", content: "ID-SU" },
-        { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+        { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+        { name: "format-detection", content: "telephone=no" },
         ...verificationMeta,
         { property: "og:site_name", content: SITE.longName },
         { property: "og:type", content: "website" },
