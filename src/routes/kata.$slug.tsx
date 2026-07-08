@@ -52,7 +52,7 @@ export const Route = createFileRoute("/kata/$slug")({
       inDefinedTermSet: {
         "@type": "DefinedTermSet",
         name: SITE.longName,
-        url: "/",
+        url: SITE.url,
         inLanguage: ["id", "nia"],
       },
       inLanguage: "id",
