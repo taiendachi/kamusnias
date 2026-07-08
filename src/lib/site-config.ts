@@ -40,7 +40,7 @@ export const SITE = {
   //              utama akan otomatis dimuat sehingga proses review lebih cepat.
   verification: {
     google: "",
-    bing: "",
+    bing: "3E415FC9D58B6F777BF0D3175B32EDBD",
     yandex: "",
     pinterest: "",
     facebook: "",
