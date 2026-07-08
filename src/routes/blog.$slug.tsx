@@ -173,6 +173,8 @@ function BlogPost() {
               width={1200}
               height={630}
               loading="eager"
+              // @ts-expect-error fetchpriority atribut HTML resmi, belum di typedef React lama
+              fetchpriority="high"
               decoding="async"
               referrerPolicy="no-referrer"
               onError={(e) => coverErrorHandler(e, post.cover!, 1200)}
