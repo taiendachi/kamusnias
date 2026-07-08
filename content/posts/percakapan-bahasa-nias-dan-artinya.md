@@ -34,7 +34,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 1. Tanya Kabar
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Ya'ahowu! Ara zilö falukha ita, hadia turia? | Ya'ahowu! Lama tidak bertemu, bagaimana kabarmu? |
 | B | Ya'ahowu! Ya'ia atulö, turia Sisökhi! Hewisa ya’ugö? | Ya'ahowu! Kabar baik, bagaimana denganmu? |
@@ -42,7 +42,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 2. Tanya Kabar Setelah Sakit
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Hewisa? No döhö'ö ba? | Sekarang bagaimana kabarnya? Sudah membaik? |
 | B | E ya'ia noa maifu manö? | Sudah lumayan, tinggal batuk sedikit. |
@@ -50,7 +50,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 3. Asal Daerah
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Heso moroi khöda? | Kamu berasal dari mana? |
 | B | Moroi ba Nias, ya'ugö? | Dari Nias, kalau kamu? |
@@ -58,7 +58,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 4. Mau Kemana
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Haöyö? Hejo möi'ö? | Halo, mau ke mana? |
 | B | Möido ba kabu. | Mau ke kebun. |
@@ -68,7 +68,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 5. Ajakan
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | He le, aine möi ita? | Halo, mau ikut tidak? |
 | B | Heso? | Ke mana? |
@@ -76,7 +76,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 6. Bertanya Umur
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Ha'uga ndröfiu? | Berapa umurmu? |
 | B | Dua wulu fakhe, ya'ugö? | Dua puluh tahun, kalau kamu? |
@@ -84,7 +84,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 7. Bertanya Rumah
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Hejoso nomomi? | Rumahmu di mana? |
 | B | Ba Teluk Dalam, ya'ugö? | Di Teluk Dalam, kalau kamu? |
@@ -92,7 +92,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 8. Bertamu di Rumah Teman
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Ya'ahowu, atulö omo ga Rahmat da'a? | Ya'ahowu, apakah ini rumah Rahmat? |
 | B | Ya'ia, hana? | Iya benar, ada apa? |
@@ -101,7 +101,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 9. Lagi Ngapain
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Haöyö, hadia halöwömö drö? | Halo, kamu sedang apa? |
 | B | Ulau mamaku laja. | Sedang mencangkul tanah. |
@@ -109,7 +109,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 10. Aku Cinta Kamu
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | He nakhi, so mena niwa'ögu, omasido khöu. | Dek, aku ingin mengatakan bahwa aku mencintaimu. |
 | B | Lau ga'a utema ya tödögu. | Iya bang, aku menerimanya. |
@@ -118,21 +118,21 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 11. Kamu Cantik
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Akhigu, hana no siga-siga ndraugö. | Dek, kok kamu cantik sekali sih? |
 | B | Ae ga'a, si to'ölö manö. | Ah bang, biasa saja kok. |
 
 12. Kamu Ganteng
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | He ga'a hana no baga-baga jikhalau? | Bang, kok kamu ganteng sekali sih? |
 | B | Lo nakhie, si to'ölö manö. | Tidak kok dek, biasa saja. |
 
 13. Kamu Sudah Datang
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Ya'ahowu... | Ya'ahowu... |
 | B | Ya'ahowu, no so ndraugö? | Ya'ahowu, kamu sudah datang? |
@@ -140,7 +140,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 14. Jangan Lupa Makan
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | E Pa atau Ma... | Pak... Bu... |
 | B | Hadia ba nogu? | Iya nak? |
@@ -148,7 +148,7 @@ Nah dibawah ini ada 15 contoh percakapan bahasa Nias sehari-hari dan artinya yan
 
 15. Siapa Namamu
 
-| Pembicara | Bahasa Nias | Bahasa Indonesia |
+| No | Bahasa Nias | Bahasa Indonesia |
 |---------|---------|---------|
 | A | Ya'ahowu kawa, haniha döi mö? | Ya'ahowu kawan, siapa namamu? |
 | B | Ya'ahowu, töigu Rudi. Ya'ugö? | Ya'ahowu, namaku Rudi. Kalau kamu? |
