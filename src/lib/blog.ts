@@ -54,12 +54,16 @@ function mdToPost(path: string, raw: string): BlogPost | null {
   if (!title) return null;
   const rawDate = (data.date as string) || new Date().toISOString();
   const date = rawDate.slice(0, 10); // YYYY-MM-DD
+  const rawUpdated = (data.updated as string) || (data.modified as string) || "";
+  const updated = rawUpdated ? rawUpdated.slice(0, 10) : undefined;
   return {
     slug,
     title,
     description: (data.description as string) || "",
     date,
+    updated,
     author: (data.author as string) || undefined,
+    category: (data.category as string) || undefined,
     cover: ((data.cover as string) || (data.thumbnail as string) || "") || undefined,
     tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
     content: body.trim(),
