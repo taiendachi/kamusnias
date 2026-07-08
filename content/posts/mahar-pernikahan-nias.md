@@ -7,7 +7,7 @@ description: "Mahar Pernikahan Nias membahas bowo, makna adat, proses penentuan 
 ai_overview: ""
 category: "Blog"
 tags: ["Mahar Pernikahan Nias", "Mahar Adat Nias", "Bowo Nias", "Pernikahan Adat Nias", "Budaya Nias", "Tradisi Nias"]
-thumbnail: ""
+thumbnail: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPUWQUvr3dapdR_xFJ0BK1IYcFQlV67cyDMsTzheyK1ksxNHBLe_pg_HI-faqv1dpTtuMzi57mMm88pVPTYn44gjT9M9HnRBQmh1py5TO-GqSuankh0Ia44MF5RF8tN96DV6PFzJGORQ21AcXUu10gJ129QDex7bCa85wPeZeASK9McU8k2DVYpgWwCJg/s1280/Realitas%20Pahit%20Akibat%20Mahar%20Pernikahan%20Nias%20Terlalu%20Besar%20dan%20Kenapa%20Bisa%20Mahal.png"
 ---
 
 **kamusnias.or.id** - Mahar Pernikahan Nias adalah bagian penting dalam adat perkawinan Nias yang dikenal dengan istilah bowo.
