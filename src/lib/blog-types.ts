@@ -23,8 +23,12 @@ export interface BlogPost {
   slug: string;
   title: string;
   description: string;
-  date: string; // ISO YYYY-MM-DD
+  date: string; // ISO YYYY-MM-DD (tanggal publish)
+  /** Tanggal update terakhir (opsional, ISO YYYY-MM-DD). Fallback ke `date`. */
+  updated?: string;
   author?: string;
+  /** Kategori artikel (mis. "Bahasa", "Budaya", "Sejarah"). Dipakai untuk articleSection. */
+  category?: string;
   /**
    * URL absolut gambar cover artikel (mis. dari Blogger). Dipakai sebagai
    * thumbnail di /blog, hero di halaman artikel, dan otomatis menjadi

@@ -7,7 +7,7 @@ import { BlogContent } from "@/components/BlogContent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS, getPost } from "@/lib/blog";
-import { normalizeCover, coverErrorHandler } from "@/lib/cover-image";
+import { normalizeCover, coverErrorHandler, discoverImages } from "@/lib/cover-image";
 import { CalendarDays } from "lucide-react";
 
 
@@ -23,61 +23,104 @@ export const Route = createFileRoute("/blog/$slug")({
   },
   head: ({ loaderData, params }) => {
     const post = loaderData?.post;
-    if (!post) return { meta: [{ title: "Artikel tidak ditemukan" }] };
+    if (!post) {
+      return {
+        meta: [
+          { title: "Artikel tidak ditemukan" },
+          { name: "robots", content: "noindex, follow" },
+        ],
+      };
+    }
     const url = `${SITE.url}/blog/${params.slug}`;
-    const image = post.cover || SITE.ogImage;
+    const cover = post.cover ? normalizeCover(post.cover) : SITE.ogImage;
+    const imageSet = post.cover ? discoverImages(post.cover) : [SITE.ogImage];
+    const dateModified = post.updated || post.date;
+    // Word count sederhana dari markdown body.
+    const wordCount = post.content
+      ? post.content.replace(/[#*_>`\-\[\]()!|]/g, " ").split(/\s+/).filter(Boolean).length
+      : undefined;
+    const publisherLogo = `${SITE.url}/kamus-nias-logo.png`;
+
+    const article = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      image: imageSet,
+      datePublished: post.date,
+      dateModified,
+      inLanguage: "id",
+      author: {
+        "@type": "Organization",
+        name: post.author ?? SITE.organization,
+        url: SITE.url,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: SITE.organization,
+        url: SITE.url,
+        logo: {
+          "@type": "ImageObject",
+          url: publisherLogo,
+          width: 512,
+          height: 512,
+        },
+      },
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      keywords: (post.tags ?? []).join(", "),
+      articleSection: post.category || "Blog",
+      ...(wordCount ? { wordCount } : {}),
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["h1", "article header p"],
+      },
+    };
+    const breadcrumbs = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Beranda", item: `${SITE.url}/` },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
+        { "@type": "ListItem", position: 3, name: post.title, item: url },
+      ],
+    };
+
     return {
       meta: [
         { title: `${post.title} — ${SITE.name}` },
         { name: "description", content: post.description },
         { name: "keywords", content: (post.tags ?? []).join(", ") },
         { name: "author", content: post.author ?? SITE.organization },
+        { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
         { property: "article:published_time", content: post.date },
+        { property: "article:modified_time", content: dateModified },
         { property: "article:author", content: post.author ?? SITE.organization },
+        { property: "article:section", content: post.category || "Blog" },
+        ...(post.tags ?? []).map((t) => ({ property: "article:tag", content: t })),
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
-        { property: "og:image", content: image },
+        { property: "og:image", content: cover },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
         { property: "og:image:alt", content: post.title },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: post.title },
         { name: "twitter:description", content: post.description },
-        { name: "twitter:image", content: image },
+        { name: "twitter:image", content: cover },
+        { name: "twitter:image:alt", content: post.title },
       ],
-      links: [{ rel: "canonical", href: url }],
-      scripts: [{
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: post.title,
-          description: post.description,
-          image: image,
-          datePublished: post.date,
-          dateModified: post.date,
-          inLanguage: "id",
-          author: { "@type": "Organization", name: post.author ?? SITE.organization },
-          publisher: {
-            "@type": "Organization",
-            name: SITE.organization,
-            logo: { "@type": "ImageObject", url: SITE.ogImage },
-          },
-          mainEntityOfPage: { "@type": "WebPage", "@id": url },
-          keywords: (post.tags ?? []).join(", "),
-        }),
-      }, {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Beranda", item: `${SITE.url}/` },
-            { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
-            { "@type": "ListItem", position: 3, name: post.title, item: url },
-          ],
-        }),
-      }],
+      links: [
+        { rel: "canonical", href: url },
+        ...(post.cover
+          ? [{ rel: "preload", as: "image", href: cover, fetchpriority: "high" } as Record<string, string>]
+          : []),
+      ],
+      scripts: [
+        { type: "application/ld+json", children: JSON.stringify(article) },
+        { type: "application/ld+json", children: JSON.stringify(breadcrumbs) },
+      ],
     };
   },
   notFoundComponent: () => (
@@ -130,6 +173,8 @@ function BlogPost() {
               width={1200}
               height={630}
               loading="eager"
+              // @ts-expect-error fetchpriority atribut HTML resmi, belum di typedef React lama
+              fetchpriority="high"
               decoding="async"
               referrerPolicy="no-referrer"
               onError={(e) => coverErrorHandler(e, post.cover!, 1200)}

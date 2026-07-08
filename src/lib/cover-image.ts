@@ -36,3 +36,20 @@ export function coverErrorHandler(
   img.dataset.fallback = "1";
   img.src = proxyCover(original, width);
 }
+
+/**
+ * Multi-aspect ratio image URLs untuk Google Discover / Article schema.
+ * Google merekomendasikan menyediakan gambar dalam beberapa rasio dengan
+ * lebar minimal 1200 px. Semua URL dilewatkan melalui proxy weserv agar
+ * konsisten & tahan gagal-muat dari CDN asal (mis. Blogger).
+ */
+export function discoverImages(url: string): string[] {
+  if (!url) return [];
+  const clean = url.replace(/^https?:\/\//i, "");
+  const base = `https://images.weserv.nl/?url=${encodeURIComponent(clean)}`;
+  return [
+    `${base}&w=1200&h=1200&fit=cover&output=jpg`, // 1:1
+    `${base}&w=1200&h=900&fit=cover&output=jpg`,  // 4:3
+    `${base}&w=1600&h=900&fit=cover&output=jpg`,  // 16:9 — utama untuk Discover
+  ];
+}
