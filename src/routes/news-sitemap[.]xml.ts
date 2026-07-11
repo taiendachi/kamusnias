@@ -19,11 +19,17 @@ export const Route = createFileRoute("/news-sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        // Google News accepts articles up to 2 days old. Fallback ke artikel
+        // terbaru jika tidak ada yang memenuhi, supaya sitemap tidak kosong
+        // (urlset kosong ditolak Search Console dengan error "Tidak ada tag XML").
         const cutoff = Date.now() - 1000 * 60 * 60 * 48;
-        const recent = BLOG_POSTS.filter((p) => {
+        let recent = BLOG_POSTS.filter((p) => {
           const t = new Date(p.date).getTime();
           return !Number.isNaN(t) && t >= cutoff;
         });
+        if (recent.length === 0 && BLOG_POSTS.length > 0) {
+          recent = BLOG_POSTS.slice(0, 1);
+        }
 
         const urls = recent
           .map((p) => {
