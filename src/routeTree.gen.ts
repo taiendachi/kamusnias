@@ -18,6 +18,7 @@ import { Route as NewsSitemapDotxmlRouteImport } from './routes/news-sitemap[.]x
 import { Route as KontakRouteImport } from './routes/kontak'
 import { Route as KamusRouteImport } from './routes/kamus'
 import { Route as CariRouteImport } from './routes/cari'
+import { Route as AtomDotxmlRouteImport } from './routes/atom[.]xml'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as PageTermsOfServiceRouteImport } from './routes/page.terms-of-service'
@@ -71,6 +72,11 @@ const CariRoute = CariRouteImport.update({
   path: '/cari',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AtomDotxmlRoute = AtomDotxmlRouteImport.update({
+  id: '/atom.xml',
+  path: '/atom.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -109,6 +115,7 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atom.xml': typeof AtomDotxmlRoute
   '/cari': typeof CariRoute
   '/kamus': typeof KamusRoute
   '/kontak': typeof KontakRoute
@@ -127,6 +134,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atom.xml': typeof AtomDotxmlRoute
   '/cari': typeof CariRoute
   '/kamus': typeof KamusRoute
   '/kontak': typeof KontakRoute
@@ -146,6 +154,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atom.xml': typeof AtomDotxmlRoute
   '/cari': typeof CariRoute
   '/kamus': typeof KamusRoute
   '/kontak': typeof KontakRoute
@@ -166,6 +175,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/atom.xml'
     | '/cari'
     | '/kamus'
     | '/kontak'
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/atom.xml'
     | '/cari'
     | '/kamus'
     | '/kontak'
@@ -202,6 +213,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/atom.xml'
     | '/cari'
     | '/kamus'
     | '/kontak'
@@ -221,6 +233,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtomDotxmlRoute: typeof AtomDotxmlRoute
   CariRoute: typeof CariRoute
   KamusRoute: typeof KamusRoute
   KontakRoute: typeof KontakRoute
@@ -303,6 +316,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CariRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/atom.xml': {
+      id: '/atom.xml'
+      path: '/atom.xml'
+      fullPath: '/atom.xml'
+      preLoaderRoute: typeof AtomDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -357,6 +377,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtomDotxmlRoute: AtomDotxmlRoute,
   CariRoute: CariRoute,
   KamusRoute: KamusRoute,
   KontakRoute: KontakRoute,
