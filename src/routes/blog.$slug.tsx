@@ -41,9 +41,12 @@ export const Route = createFileRoute("/blog/$slug")({
       : undefined;
     const publisherLogo = `${SITE.url}/kamus-nias-logo.png`;
 
+    // Berita layak Google News: publish dalam 2 hari terakhir.
+    const publishedTime = new Date(post.date).getTime();
+    const isNews = !Number.isNaN(publishedTime) && Date.now() - publishedTime <= 1000 * 60 * 60 * 48;
     const article = {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
+      "@type": isNews ? "NewsArticle" : "BlogPosting",
       headline: post.title,
       description: post.description,
       image: imageSet,
