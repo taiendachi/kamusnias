@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://kamusnias.or.id/sitemap.xml
+Sitemap: https://kamusnias.or.id/news-sitemap.xml
+Sitemap: https://kamusnias.or.id/rss.xml
