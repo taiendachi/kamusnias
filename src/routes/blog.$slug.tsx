@@ -33,6 +33,9 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     const url = `${SITE.url}/blog/${params.slug}`;
     const cover = post.cover ? normalizeCover(post.cover) : SITE.ogImage;
+    // Gambar khusus Open Graph / Twitter: dijamin 1200×630 JPG lewat proxy
+    // agar Facebook, LinkedIn, dsb. menampilkan large image card.
+    const ogImage = post.cover ? ogImageUrl(post.cover) : SITE.ogImage;
     const imageSet = post.cover ? discoverImages(post.cover) : [SITE.ogImage];
     const dateModified = post.updated || post.date;
     // Word count sederhana dari markdown body.
