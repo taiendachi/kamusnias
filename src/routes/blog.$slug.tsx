@@ -7,7 +7,7 @@ import { BlogContent } from "@/components/BlogContent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS, getPost } from "@/lib/blog";
-import { normalizeCover, coverErrorHandler, discoverImages } from "@/lib/cover-image";
+import { normalizeCover, coverErrorHandler, discoverImages, ogImageUrl } from "@/lib/cover-image";
 import { CalendarDays } from "lucide-react";
 
 
@@ -33,6 +33,9 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     const url = `${SITE.url}/blog/${params.slug}`;
     const cover = post.cover ? normalizeCover(post.cover) : SITE.ogImage;
+    // Gambar khusus Open Graph / Twitter: dijamin 1200×630 JPG lewat proxy
+    // agar Facebook, LinkedIn, dsb. menampilkan large image card.
+    const ogImage = post.cover ? ogImageUrl(post.cover) : SITE.ogImage;
     const imageSet = post.cover ? discoverImages(post.cover) : [SITE.ogImage];
     const dateModified = post.updated || post.date;
     // Word count sederhana dari markdown body.
@@ -104,14 +107,16 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:description", content: post.description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
-        { property: "og:image", content: cover },
+        { property: "og:image", content: ogImage },
+        { property: "og:image:secure_url", content: ogImage },
+        { property: "og:image:type", content: "image/jpeg" },
         { property: "og:image:width", content: "1200" },
         { property: "og:image:height", content: "630" },
         { property: "og:image:alt", content: post.title },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: post.title },
         { name: "twitter:description", content: post.description },
-        { name: "twitter:image", content: cover },
+        { name: "twitter:image", content: ogImage },
         { name: "twitter:image:alt", content: post.title },
       ],
       links: [

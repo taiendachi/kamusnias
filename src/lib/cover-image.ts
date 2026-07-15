@@ -25,6 +25,21 @@ export function proxyCover(url: string, width = 1200): string {
   return `https://images.weserv.nl/?url=${encodeURIComponent(clean)}&w=${width}&output=webp`;
 }
 
+/**
+ * URL gambar untuk Open Graph / Twitter Card — dijamin berdimensi
+ * 1200×630 JPG lewat proxy weserv.nl. Fungsi ini memastikan Facebook,
+ * LinkedIn, Twitter, dan platform lain menampilkan "large image card"
+ * karena dimensi asli gambar sumber (mis. Blogger `/s1280/`, `/s16000/`)
+ * tidak selalu memenuhi rasio 1.91:1 minimal 1200×630 yang disyaratkan
+ * Facebook. Proxy juga menghapus header `Referer` yang kadang membuat
+ * crawler Facebook gagal mengambil gambar Blogger CDN.
+ */
+export function ogImageUrl(url: string): string {
+  if (!url) return url;
+  const clean = url.replace(/^https?:\/\//i, "");
+  return `https://images.weserv.nl/?url=${encodeURIComponent(clean)}&w=1200&h=630&fit=cover&a=attention&output=jpg&q=85`;
+}
+
 /** Handler `onError` untuk <img>: coba proxy sekali, lalu menyerah. */
 export function coverErrorHandler(
   e: React.SyntheticEvent<HTMLImageElement>,

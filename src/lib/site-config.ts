@@ -42,7 +42,7 @@ export const SITE = {
     google: "PunKVayn0PfdL7FZ6bylW1_0qODJLacZfh3gLonTohg",
     bing: "3E415FC9D58B6F777BF0D3175B32EDBD",
     yandex: "",
-    pinterest: "",
+    pinterest: "dce6e0e7fe9cbc4803a88561cc67546f",
     facebook: "",
     adsensePublisherId: "",
   },
