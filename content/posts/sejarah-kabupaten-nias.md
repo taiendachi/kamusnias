@@ -36,6 +36,8 @@ Dalam perkembangannya, terbentuk banyak wilayah adat yang dikenal sebagai Banua 
 
 Walaupun belum menjadi satu pemerintahan yang menyatukan seluruh Pulau Nias, sistem ini menunjukkan bahwa masyarakat Nias telah memiliki tata kelola pemerintahan yang mapan jauh sebelum datangnya bangsa Eropa.
 
+Baca Juga :  [Sejarah Nias Barat]()
+
 ## Hubungan Dagang dengan VOC
 
 Catatan sejarah menunjukkan bahwa masyarakat Nias telah menjalin hubungan dengan bangsa Eropa sejak abad ke-17.
