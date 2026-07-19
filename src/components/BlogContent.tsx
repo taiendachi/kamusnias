@@ -278,8 +278,20 @@ export function BlogContent({ content }: { content: string }) {
       }
       const header = splitRow(rows[0]);
       const body = rows.slice(1).filter((r) => !isTableSep(r)).map(splitRow);
+      // Deteksi kolom nomor otomatis: header seperti "No", "No.", "#", "Nomor"
+      // ATAU seluruh sel kolom pertama berisi angka murni.
+      const firstHeader = (header[0] || "").trim().toLowerCase().replace(/\.$/, "");
+      const headerLooksNo = ["no", "nomor", "#", "num", "number"].includes(firstHeader);
+      const allNumeric =
+        body.length > 0 &&
+        body.every((r) => /^\s*\d+\s*$/.test(r[0] ?? ""));
+      const hasNoCol = header.length >= 2 && (headerLooksNo || allNumeric);
+      const cols = header.length;
       blocks.push(
-        <table key={key++} className="blog-table">
+        <table
+          key={key++}
+          className={`blog-table ${hasNoCol ? "has-no-col" : ""} cols-${cols}`}
+        >
           <thead>
             <tr>
               {header.map((h, j) => (
