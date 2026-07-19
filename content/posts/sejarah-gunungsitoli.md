@@ -146,6 +146,8 @@ Pemerintah menetapkan Gunungsitoli sebagai daerah otonom sehingga memiliki kewen
 
 Perubahan status ini sering disalahartikan sebagai awal sejarah Gunungsitoli. Padahal, yang berubah adalah sistem pemerintahannya, bukan usia peradabannya.
 
+Baca Juga :  **[Sejarah Nias Barat](/sejarah-nias-barat)**
+
 ## Mengapa Memahami Sejarah Gunungsitoli Masih Penting?
 
 Setelah mengetahui perjalanan panjang kota ini, muncul pertanyaan berikutnya. Apa manfaat mempelajari sejarah Gunungsitoli pada masa sekarang?
