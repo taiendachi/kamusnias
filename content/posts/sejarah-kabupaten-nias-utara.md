@@ -97,6 +97,8 @@ Beberapa perubahan nama wilayah dilakukan, seperti:
 
 Pada tahun 1946, Pemerintahan Nias resmi berubah menjadi Kabupaten Nias yang dipimpin oleh seorang Bupati.
 
+Baca Juga :  [Sejarah Nias Barat]()
+
 ## Perkembangan Wilayah Kecamatan
 
 Seiring bertambahnya jumlah penduduk dan kebutuhan pelayanan pemerintahan, Kabupaten Nias beberapa kali mengalami pemekaran kecamatan.
