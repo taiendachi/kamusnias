@@ -64,6 +64,8 @@ Menurut beberapa catatan sejarah, terdapat tiga kelompok marga yang menjadi peng
 
 Informasi ini membantu menjelaskan mengapa Gunungsitoli sejak awal berkembang sebagai pusat interaksi sosial dan ekonomi masyarakat Nias.
 
+Baca Juga :  **[Sejarah Kabupaten Nias](/sejarah-kabupaten-nias)**
+
 ### Asal Nama Gunungsitoli Masih Menjadi Kajian Sejarah
 
 Menariknya, hingga sekarang belum ada kesepakatan tunggal mengenai asal nama Gunungsitoli.
@@ -83,6 +85,8 @@ Sampai di sini kamu mungkin bertanya, mengapa justru Gunungsitoli yang berkemban
 Jawabannya tidak hanya karena letaknya strategis. Perkembangan Gunungsitoli merupakan hasil perpaduan antara kondisi alam, jaringan perdagangan, dan kebijakan pemerintahan yang berlangsung selama berabad-abad. 
 
 Faktor-faktor tersebut saling memperkuat hingga membentuk kota yang kita kenal sekarang.
+
+Baca Juga :  **[Sejarah Nias Selatan](/sejarah-kabupaten-nias-selatan)**
 
 ### Letak Strategis Membuat Gunungsitoli Menjadi Pelabuhan Utama
 
@@ -114,7 +118,9 @@ Pada masa pemerintahan Hindia Belanda, Gunungsitoli berkembang sebagai pusat adm
 
 Pemerintah kolonial membangun benteng, kantor pemerintahan, sekolah, serta fasilitas pelayanan yang memperkuat posisi kota sebagai pusat pengendalian wilayah Nias.
 
-### Studi Kasus
+Baca Juga : **[Sejarah Nias Utara](/sejarah-kabupaten-nias-utara)**
+
+### Dampak Perkembangan
 
 Dampak perkembangan tersebut masih dapat dilihat hingga sekarang.
 
