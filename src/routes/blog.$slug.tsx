@@ -5,6 +5,7 @@ import { LazyInView } from "@/components/LazyInView";
 import { AdSlot } from "@/components/AdSlot";
 import { BlogContent } from "@/components/BlogContent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { AuthorProfile } from "@/components/AuthorProfile";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS, getPost } from "@/lib/blog";
 import { normalizeCover, coverErrorHandler, discoverImages, ogImageUrl } from "@/lib/cover-image";
