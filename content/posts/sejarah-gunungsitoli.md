@@ -152,6 +152,8 @@ Budaya, adat istiadat, dan pola permukiman masyarakat Nias tidak muncul secara t
 
 Dengan memahami perjalanan Gunungsitoli, kamu juga lebih mudah memahami mengapa kota ini menjadi pusat pendidikan, perdagangan, dan pemerintahan di Kepulauan Nias.
 
+Baca Juga :  **[Sejarah Nias Utara](/sejarah-kabupaten-nias-utara)**
+
 ### 2. Menjelaskan Mengapa Gunungsitoli Menjadi Pusat Aktivitas
 
 Banyak orang mengira perkembangan Gunungsitoli hanya terjadi setelah menjadi kota otonom.
