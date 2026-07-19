@@ -54,6 +54,8 @@ Atas dasar aspirasi masyarakat dan dukungan berbagai lembaga daerah, muncul usul
 
 Aspirasi tersebut mendapat dukungan dari DPRD Kabupaten Nias dan DPRD Provinsi Sumatera Utara sebelum akhirnya disahkan oleh pemerintah pusat.
 
+Baca Juga :  [Sejarah Nias Barat]()
+
 ## Resmi Menjadi Kabupaten Nias Selatan
 
 Perjuangan tersebut membuahkan hasil ketika pemerintah menetapkan Undang-Undang Nomor 9 Tahun 2003 tentang Pembentukan Kabupaten Nias Selatan, Kabupaten Pakpak Bharat, dan Kabupaten Humbang Hasundutan.
@@ -77,7 +79,9 @@ Kabupaten Nias Selatan memiliki wilayah yang luas dan terdiri atas pulau utama s
 Beberapa pulau terbesar meliputi:
 
 - Pulau Hibala
+
 - Pulau Tanahmasa
+
 - Pulau Tello
 
 Sebagian pulau dihuni masyarakat, sementara lainnya masih berupa kawasan alami yang memiliki potensi perikanan, konservasi, dan pariwisata. 
