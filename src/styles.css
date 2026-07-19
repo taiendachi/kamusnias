@@ -199,9 +199,11 @@
   .blog-table td { padding: 0.45rem 0.4rem; }
 }
 
-/* Kolom pertama (No) dipaskan — cukup sekedar angka, tidak makan ruang. */
-.blog-table th:first-child,
-.blog-table td:first-child {
+/* Kolom pertama sebagai "No" — hanya aktif ketika parser mendeteksi
+   header bernama No/Nomor/# ATAU seluruh sel kolom pertama berisi angka.
+   Tabel tanpa kolom nomor otomatis membagi lebar kolom secara merata. */
+.blog-table.has-no-col th:first-child,
+.blog-table.has-no-col td:first-child {
   width: 3.25rem;
   min-width: 3.25rem;
   padding-left: 0.5rem;
@@ -214,11 +216,12 @@
   color: var(--muted-foreground);
 }
 @media (max-width: 640px) {
-  .blog-table th:first-child,
-  .blog-table td:first-child {
+  .blog-table.has-no-col th:first-child,
+  .blog-table.has-no-col td:first-child {
     width: 2.6rem;
     min-width: 2.6rem;
     padding-left: 0.3rem;
     padding-right: 0.3rem;
   }
 }
+

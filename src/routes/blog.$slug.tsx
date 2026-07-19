@@ -5,6 +5,7 @@ import { LazyInView } from "@/components/LazyInView";
 import { AdSlot } from "@/components/AdSlot";
 import { BlogContent } from "@/components/BlogContent";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { AuthorProfile } from "@/components/AuthorProfile";
 import { SITE } from "@/lib/site-config";
 import { BLOG_POSTS, getPost } from "@/lib/blog";
 import { normalizeCover, coverErrorHandler, discoverImages, ogImageUrl } from "@/lib/cover-image";
@@ -216,6 +217,8 @@ function BlogPost() {
         </LazyInView>
 
         <AdSlot type="mgid" slot="inArticle" />
+
+        <AuthorProfile />
 
         {others.length > 0 && (
           <section className="mt-10 border-t border-border pt-6">
