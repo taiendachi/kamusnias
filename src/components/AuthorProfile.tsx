@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+
 
 /**
  * Kartu profil penulis — tampil otomatis di akhir setiap artikel blog.
@@ -34,14 +34,6 @@ export function AuthorProfile() {
             berbagai aspek kehidupan sosial masyarakat Nias secara akurat,
             informatif, dan mudah dipahami.
           </p>
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-3 text-xs sm:justify-start">
-            <Link
-              to="/tentang"
-              className="font-medium text-primary hover:underline"
-            >
-              Tentang penulis →
-            </Link>
-          </div>
         </div>
       </div>
     </aside>
