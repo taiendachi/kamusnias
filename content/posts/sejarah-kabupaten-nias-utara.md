@@ -31,9 +31,12 @@ Pembentukan wilayah ini didasarkan pada pertimbangan antropologis karena masyara
 Afdeeling Nias dibagi menjadi dua wilayah utama, yaitu:
 
 - Onderafdeeling Nias Utara dengan ibu kota Gunungsitoli.
+
 - Onderafdeeling Nias Selatan dengan ibu kota Teluk Dalam.
 
 Masing-masing dipimpin oleh seorang Controleur atau Gezaghebber yang bertanggung jawab langsung kepada pemerintah kolonial.
+
+Baca Juga :  **[Sejarah Nias Selatan](/sejarah-kabupaten-nias-selatan)**
 
 ## Struktur Pemerintahan pada Masa Belanda
 
@@ -42,9 +45,13 @@ Di bawah tingkat Onderafdeeling terdapat Distrik dan Onderdistrik yang dipimpin 
 Untuk wilayah Nias Utara, pemerintah kolonial membagi daerah menjadi beberapa Onderdistrik, antara lain:
 
 - Gunungsitoli
+
 - Idano Gawo
+
 - Hiliduho (Hiliguigui)
+
 - Lahewa
+
 - Lahagu
 
 Sementara itu, pemerintahan paling bawah tetap menggunakan sistem adat yang telah lama berlaku di masyarakat. 
@@ -83,7 +90,9 @@ Setelah Indonesia merdeka, wilayah Nias mulai menyesuaikan struktur pemerintahan
 Beberapa perubahan nama wilayah dilakukan, seperti:
 
 - Onderdistrik Hiliguigui menjadi Kecamatan Tuhemberua.
+
 - Onderdistrik Lahagu menjadi Kecamatan Mandrehe.
+
 - Onderdistrik Balaekha menjadi Kecamatan Lahusa.
 
 Pada tahun 1946, Pemerintahan Nias resmi berubah menjadi Kabupaten Nias yang dipimpin oleh seorang Bupati.
@@ -95,12 +104,19 @@ Seiring bertambahnya jumlah penduduk dan kebutuhan pelayanan pemerintahan, Kabup
 Beberapa kecamatan yang dibentuk antara lain:
 
 - Gido (1953)
+
 - Gomo (1953)
+
 - Alasa (1953)
+
 - Sirombu (1956)
+
 - Lolofitu Moi (1992)
+
 - Hiliduho (1992)
+
 - Amandraya (1996)
+
 - Lolomatua (1996)
 
 Pada tahun 2000, pemerintah kembali menetapkan lima kecamatan baru, yaitu Hibala, Bawolato, Namohalu Esiwa, Lotu, dan Afulu.
@@ -120,15 +136,25 @@ Kabupaten baru ini merupakan hasil pemekaran dari Kabupaten Nias dengan ibu kota
 Pada awal pembentukannya, Kabupaten Nias Utara terdiri atas sebelas kecamatan, yaitu:
 
 - Lotu
+
 - Sawo
+
 - Tuhemberua
+
 - Sitolu Ori
+
 - Namohalu Esiwa
+
 - Alasa
+
 - Alasa Talumuzoi
+
 - Tugala Oyo
+
 - Afulu
+
 - Lahewa
+
 - Lahewa Timur
 
 Pemekaran ini menjadi langkah penting untuk mempercepat pembangunan, memperluas pelayanan publik, serta meningkatkan kesejahteraan masyarakat di wilayah utara Pulau Nias.
