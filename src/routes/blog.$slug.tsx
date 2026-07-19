@@ -217,6 +217,8 @@ function BlogPost() {
 
         <AdSlot type="mgid" slot="inArticle" />
 
+        <AuthorProfile />
+
         {others.length > 0 && (
           <section className="mt-10 border-t border-border pt-6">
             <h2 className="font-serif text-xl font-bold">Artikel lainnya</h2>
