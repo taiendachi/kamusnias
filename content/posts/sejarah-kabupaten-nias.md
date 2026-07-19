@@ -77,6 +77,7 @@ Status pemerintahan kembali meningkat pada tahun 1919 ketika Onder Afdeeling Nia
 Afdeeling Nias dibagi menjadi dua wilayah utama, yaitu:
 
 - Onder Afdeeling Nias Utara beribu kota Gunungsitoli.
+
 - Onder Afdeeling Nias Selatan beribu kota Teluk Dalam.
 
 Di bawahnya terdapat Distrik dan Onder Distrik yang dipimpin oleh Demang serta Asisten Demang.
@@ -84,6 +85,8 @@ Di bawahnya terdapat Distrik dan Onder Distrik yang dipimpin oleh Demang serta A
 Sementara itu, pemerintahan adat tetap dipertahankan di tingkat kampung melalui Salawa di Nias Utara dan Si Ulu di Nias Selatan.
 
 Perpaduan antara administrasi kolonial dan pemerintahan adat membuat pengelolaan wilayah tetap berjalan sesuai kondisi sosial masyarakat setempat.
+
+Baca Juga :  **[Sejarah Nias Selatan](/sejarah-kabupaten-nias-selatan)**
 
 ## Masa Pendudukan Jepang
 
@@ -118,8 +121,11 @@ Seiring bertambahnya jumlah penduduk dan kebutuhan pelayanan publik, wilayah Kab
 Kabupaten induk kemudian melahirkan empat daerah otonom baru, yaitu:
 
 - Kabupaten Nias Selatan (2003)
+
 - Kabupaten Nias Utara (2008)
+
 - Kabupaten Nias Barat (2008)
+
 - Kota Gunungsitoli (2008)
 
 Pemekaran tersebut bertujuan memperpendek rentang kendali pemerintahan sekaligus mempercepat pemerataan pembangunan di Kepulauan Nias.
